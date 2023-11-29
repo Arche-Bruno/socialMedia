@@ -1,0 +1,15 @@
+.containerLoadingScreen{
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-100);
+    min-height: 100vh; /* Establece una altura mínima del 100% de la ventana */
+}
+.loading-screenImage{
+  border-radius: 50%;
+  width: 150px;
+  overflow: hidden;
+}
+.loading-screenImage img{
+  width: 100%;
+  display: block;
+}

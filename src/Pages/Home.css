@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+   
+    font-family: 'Montserrat', sans-serif;
+
+}
+.sign{
+    cursor: pointer;
+}
+.container-all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(../images/fondoPage4.jpg);
+    background-size: contain;
+    background-position: center;
+   
+    overflow: hidden; /* Esto puede ayudar a ocultar el desbordamiento */
+}
+
+.container-home{
+    display: flex;
+    height: 520px;
+    max-width: 920px;
+
+    border-radius: 1rem;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .1);
+    transition: all 2s ease;
+    margin: 10px;
+
+}
+
+.container-home-info {
+
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo con opacidad */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    backdrop-filter: blur(4px); /* Nivel de desenfoque */
+
+}
+
+.info-childs{
+    width: 100%;
+    padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:2rem;
+}
+.info-childs h2{
+    font-size: 2.5rem;
+    color: #333;
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 700; /* Especifica el peso de la fuente */
+}
+.onfor-childs p{
+    margin: 15px 0;
+    color: #555;
+}
+.info-childs input{
+ 
+    outline: none;
+    background-color: #9191bd;
+    border-radius: 1.5rem;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border: solid 2px transparent;
+
+}
+.info-childs input:hover{
+    border: solid 2px #9191bd;
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    color: #000;
+    transition: background-color .3s ease;
+
+
+}
+.container-home-information {
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+      
+    width: 60%;
+    text-align: center;
+
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+ 
+}
+.difu{
+  background-color: #5218FA;
+}
+.screen-white{
+    background-color: #f8f8f8;
+    
+
+}
+.form-information-childs{
+
+  padding: 0 30px;
+  position: relative;
+}
+.bandera{
+    position: absolute;
+    right: 28%;
+    top: 25%;
+ 
+}
+.img-cell{
+   display: grid;
+   place-items: center;
+}
+.form-information-childs h2{
+    color:#333;
+    font-size: 2rem;
+}
+.form-information-childs p {
+    color: #555;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+.icons{
+    
+    margin: 15px 0;
+
+}
+.icons i{
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    border: solid thin #9191bd;
+}
+.icons i:hover{
+  background-color: #c7c7f3;
+  color: #fff;
+}
+.form{
+    margin: 30px 0 0 0;
+
+}
+.form label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+.form label input{
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    color: #333;
+}
+.form label i{
+    color: #a7a7a7;
+}
+.form .submit{
+    background-color: #9191bd;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+.form .submit:hover{
+    background-color: #7a7a9a;
+
+} 
+/*RESPONSIVE FORM */
+
+.hide {
+    position: absolute;
+    transform: translateY(-300%);
+  }
+@media screen and (max-width :750px){
+    .container-home {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width :580px){
+    .container-home {
+        font-size: 10px;
+        height: auto;
+        flex-direction: column;
+    }
+    .container-home-info{
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0;
+        max-width: 380px;
+    }
+    .container-home-information{
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius:20px ;
+        border-top-right-radius: 0px;
+
+    }
+    .icons i{
+       
+        padding: 10px;
+    
+        margin: 0 5px;
+    
+    }
+   
+    
+}

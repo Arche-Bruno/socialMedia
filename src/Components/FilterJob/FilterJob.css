@@ -1,0 +1,212 @@
+.container-filter {
+  width: 100%;
+  color: white;
+  border-radius: 1rem;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  max-width: 600px;
+  background-color: var(--bg-200);
+  padding: 1rem;
+}
+
+/*Estilos de las alertas*/
+
+.my-popup-class {
+  width: 370px; /* Ajusta el ancho según tus preferencias */
+  height: 440px; /* Ajusta la altura según tus preferencias */
+}
+
+.my-swal {
+  font-size: 12px; /* Ajusta el tamaño de fuente según tus preferencias */
+}
+
+.my-title {
+  font-size: 16px; /* Ajusta el tamaño de fuente del título según tus preferencias */
+}
+
+.my-content {
+  font-size: 14px; /* Ajusta el tamaño de fuente del contenido según tus preferencias */
+}
+
+.my-confirm-button {
+  font-size: 12px; /* Ajusta el tamaño de fuente del botón de confirmación según tus preferencias */
+}
+
+/**/
+
+.filter-title {
+  font-size: 15px;
+}
+
+.filter-btn {
+  display: flex;
+  flex-direction: column;
+
+  width: 80px;
+
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+
+.filter-btn-select select:active{
+border: none;
+}
+.filter-value {
+  width: 140px;
+}
+.filter-btn-span {
+  text-align: center;
+}
+.filter-value-lugar {
+  width: 140px;
+}
+@media only screen and (min-width:320px){
+ 
+  .container-filter{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+      
+ 
+  }
+.filter-text{
+  display: none;
+}
+.selectItm{
+  display: flex;
+  flex-direction: column;
+}
+
+ .filter-btns{
+
+   gap: 1rem;
+ }
+ 
+ .searchFilter {
+  
+  width: 100%;
+  display: grid;
+  place-items: center;
+ }
+ .searchFilter button{
+  border-radius: 2rem;
+ 
+  padding: 0.5rem 3rem;
+  border: 1px solid  #0070F0;;
+  transition: 0.8s;
+
+}
+.searchFilter button:hover{
+  background-color:  #0070F0;;
+  color: white;
+  border: 1px solid  white;
+}
+
+.selectItm{
+  width: 150%;
+}
+
+.filter-btns {
+  width: 100%;
+  font-size: 11px;
+  display: flex;
+ 
+  flex-direction: column;
+  align-items: center;
+
+}
+.filter-btn {
+
+  width: 100%;
+}
+.select,.category,.place
+{
+  width: 100%;
+  border-radius: 1rem;
+}
+}
+@media only screen and (min-width: 600px) {
+  .filter-text{
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 1rem 0rem;
+  }
+  
+ 
+  .filter-btn-select {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  .container-filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   
+    height: 100%;
+  
+  }
+ 
+ .filter-btns{
+   flex-direction: row;
+   justify-content: space-around;
+   margin-bottom: 1.5rem;
+ }
+ .filter-btn-select{
+  flex-direction: row;
+  
+ }
+ .filter-btn{
+  flex-direction:column;
+  align-items: center;
+
+ }
+ .searchFilter button{
+  border-radius: 1rem;
+  background-color: transparent;
+  border: 1px solid #0070F0 ;
+  padding: 0.5rem 3rem;
+  width: 90%;
+}
+
+
+}
+@media only screen and (min-width: 820px) {
+  .container-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .filter-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .filter-btn-select {
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    width: 100%;
+  }
+  .select{
+    width: 100%;
+  }
+  .searchFilter button{
+  
+    padding: 0.4rem 3rem;
+    border-radius: 2.5rem;
+   
+    
+  }
+ 
+
+}

@@ -1,0 +1,616 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
+.container-cardPubli {
+  height: 100%;
+  width: 100%;
+
+  margin: 0 auto;
+}
+.publiImgsPlace{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  height: 30px;
+}
+.img-publicacion:hover{
+  cursor: pointer;
+}
+.cardPubliAll {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2rem;
+  color: white;
+
+}
+
+.cardPubli-profileImg-starts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardPubli-profile-name {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.cardPubli-hora{
+  color: #ccc;
+}
+/*Section card user*/
+
+.cardPubli-name {
+  position: relative;
+}
+
+
+.userCard {
+  position: absolute;
+
+  width: 370px;
+  height: 380px;
+  max-width: 600px;
+  top: 60%;
+  bottom: 0%;
+  left: 0%;
+  background-color: var(--bg-100);
+  padding: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+
+.userCard-container{
+  width: 370px;
+  height: 330px;
+  max-width: 600px;
+
+}
+.userCard-img-name-start-front{
+  width: 100%;
+  height: 100%;
+  display: flex;
+   flex-direction: column;
+   gap: 1rem;
+ 
+}
+.userCardSend{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+.userCardSend button:hover{
+  background-color: #0c4586;
+  color: white;
+
+}
+.userCard-img-name-start{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.userCard-name-skill{
+  display: flex;
+  flex-direction: column;
+
+}
+.img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #0070F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.img img{
+  width: 100%;
+  display: block;
+}
+.userCard-front{
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.imgFront{
+  width: 90%;
+  height: 150px;
+  overflow: hidden;
+}
+.imgFront img{
+  width: 100%;
+  display: block;
+
+}
+
+.img-name{
+  display: flex;
+  gap: 0.5rem;
+}
+.userCard-start .MuiRating-iconFilled {
+  font-size: 16px; /* Tamaño personalizado para estrellas rellenas */
+}
+.userCard-start .MuiRating-iconEmpty {
+  font-size: 16px; /* Tamaño personalizado para estrellas vacías */
+  color: white;
+}
+/**/
+/*Estilos para los likes */
+.likeContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.likeAnimation {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s, opacity 0.3s; /* Añade una transición para transformar y la opacidad */
+}
+.likeDefect{
+  display: flex;
+  align-items: center;
+}
+
+.likeAnimation > .text-likeCount {
+  margin-left: 5px;
+}
+
+/* Agrega un efecto de escala cuando se agrega un nuevo like */
+.likeAnimation {
+  transform: scale(1);
+  opacity: 1;
+  
+}
+
+.likeAnimation.newLike {
+  transform: scale(1.2);
+  opacity: 1;
+
+}
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.likeAnimation {
+  animation-name: likeAnimation;
+  animation-duration: 1s;
+  
+}
+
+
+
+.like,.likeBtn {
+  position: relative;
+  color: white;
+}
+.like{
+  color:#0070F0
+}
+
+.userLikes {
+  position: absolute;
+  width: 170px;
+  max-height: 250px; /* Altura máxima */
+  bottom: 280%;
+  background-color: var(--bg-100);
+  padding: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  overflow-y: auto; /* Añade desplazamiento vertical */
+}
+/* Anchura y color del scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Anchura del scrollbar */
+}
+
+/* Fondo del scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Color de la manija del scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Hover sobre el scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.like-info-container {
+  display: flex;
+  flex-direction: column-reverse;
+  max-height: 180px; /* Altura máxima para ajuste de desplazamiento */
+  overflow-y: auto; /* Añade un desplazamiento vertical */
+}
+
+
+.like-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  gap: 0.5rem;
+}
+.like-info-container{
+
+    display: flex;
+    flex-direction: column-reverse;
+
+  
+}
+/**/
+.cardPubli-name {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.cardPubli-span {
+  color: #ccc;
+}
+.cardPubli-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #0070f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.cardPubli-profileDisconect {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/*Section starts and price*/
+.cardPubli-starts-preci {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+}
+.cardPubli-starts-preci-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cardPubli-starts {
+  border-radius: 0.4rem;
+}
+.cardPubli-hora-name{
+  display: flex;
+  gap: 1rem;
+}
+.nameHour{
+  font-size: 13px;
+}
+.cardPubli-hora{
+  display: flex;
+  justify-content: center;
+
+  gap: 0.2rem;
+}
+.cardPubli-starts .MuiRating-iconEmpty {
+  color: white;
+}
+.price {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+.price div {
+  font-family: "Open Sans", sans-serif;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+}
+
+/*Section imgs*/
+.cardPubli-publiImgs {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-height: 1900px;
+  overflow: hidden;
+}
+.publiImgsPlace{
+  display: flex;
+  gap: 0.5rem;
+}
+.publiImgsPlace span{
+  font-weight: 700;
+  font-size: 15px;
+
+}
+.cardPubli-img1,
+.cardPubli-img2 {
+  width: 50%;
+}
+.cardPubli-img1Only {
+  width: 100%;
+}
+.cardPubli-img2Only {
+  width: 100%;
+}
+.cardPubli-img1 img {
+  display: block;
+  width: 100%;
+}
+.cardPubli-img2 img {
+  display: block;
+  width: 100%;
+}
+
+/**/
+/*Section description*/
+.cardPubli-description {
+  font-size: 13px;
+}
+/**/
+/*Section btns*/
+.cardPubli-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardPubli-btn {
+  background-color: var(--bg-200);
+  width: 50%;
+  margin-top: 1rem;
+}
+.cardPubli-btn Button {
+  display: flex;
+
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 98%;
+  padding: 0.5rem 0rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: 1px solid #0070f0;
+  
+}
+.likeBtn{
+  background-color: #0070F0;
+}
+.cardPubli-btn Button:hover {
+  background-color: var(--bg-100);
+}
+.cardPubli-btn .heart{
+  border: 1px solid #0070F0;
+}
+.cardPubli-btn .contact{
+  border: 1px solid #0070F0;
+}
+.cardPubli-btns {
+  border-top: 1px solid #ccc;
+}
+.like,.likeBtn {
+  border-radius: 0.5rem;
+  padding: 0.1rem 0;
+  border: 2px solid #0070f0;
+  margin-left: 0.2rem;
+ 
+}
+
+.contactPadre{
+  border-radius: 0.5rem;
+  padding: 0.1rem 0;
+  border: 2px solid #0070F0;
+  margin-left: 0.2rem;
+}
+
+.cardPubli-btn{
+  font-size: 12px;
+}
+@media only screen and (min-width: 350px) {
+  .like-heart{
+    display: flex;
+    gap: 1rem;
+  }
+  .userCard {
+    width: 300px;
+    height: 340px;
+  }
+  .userCard-container{
+   width: 280px;
+   height: 300px;
+  }
+  .userCard-name-skills {
+    font-size: 12px;
+  }
+  .userCard-text {
+    font-size: 11px;
+  }
+  .cardPubli-hora-name{
+    flex-direction: column;
+    gap: 0rem;
+  }
+  .cardPubli-hora{
+    
+    gap: 0rem;
+  }
+  /*Estilos para el perfil*/
+  .userCard-starts {
+    font-size: 9px;
+  }
+  .cardPubli-starts {
+    font-size: 10px;
+  }
+  .name {
+    font-size: 13px;
+  }
+  .name-publi{
+    font-size: 12px;
+  }
+  .cardPubli-span {
+    font-size: 10px;
+  }
+  .cardPubli-description {
+    font-size: 12px;
+  }
+  /**/
+ 
+  .text-like{
+    font-size: 10px;
+  }
+  .likeAnimation > span{
+    margin-left: -8px;
+  }
+  .likeContainer > span{
+    margin-left: 15rem;
+  }
+  .cardPubli-hora{
+    display: none;
+  }
+  .cardPubli-horaMobile{
+    position: absolute;
+    display: flex;
+    gap: 0.2rem;
+  
+    right: 12%;
+    
+  }
+  .cardPubli-starts .MuiRating-iconFilled {
+    font-size: 18px; /* Tamaño personalizado para estrellas rellenas */
+   
+  }
+  .cardPubli-starts .MuiRating-iconEmpty {
+    font-size: 18px; /* Tamaño personalizado para estrellas vacías */
+    color: white;
+  }
+  .price{
+    font-size: 12px;
+  }
+ .text-heart,.text-contact{
+  font-size: 10px;
+ }
+}
+
+@media only screen and (min-width: 600px) {
+  .text-like{
+    font-size: 15px;
+  }
+  .text-heart,.text-contact{
+    font-size: 15px;
+   }
+  .likeAnimation > span{
+    margin-left: 10px;
+  }
+  .likeContainer > span{
+    margin-left: 15rem;
+  }
+  .cardPubli-starts .MuiRating-iconFilled {
+    font-size: 30px; /* Tamaño personalizado para estrellas rellenas */
+   
+  }
+  .cardPubli-starts .MuiRating-iconEmpty {
+    font-size: 30px; /* Tamaño personalizado para estrellas vacías */
+    color: white;
+  }
+  .price{
+    font-size: 15px;
+  }
+  .cardPubli-hora{
+    display: block;
+    display: flex;
+    gap: 0.2rem;
+    right: 12%;
+  }
+  .cardPubli-horaMobile{
+    display: none;
+    
+  }
+  .userCard {
+    width: 400px;
+    height: 420px;
+  }
+  .userCard-name-skills {
+    padding: 2rem 0rem;
+  }
+  .cardPubli-hora-name{
+     flex-direction: row;
+     gap: 1rem;
+  }
+  /*Estilos para el perfil*/
+  .price {
+    font-size: 14px;
+  }
+  .userCard-name-skills {
+    font-size: 14px;
+  }
+  .userCard-starts {
+    font-size: 14px;
+  }
+  .cardPubli-starts {
+    font-size: 14px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .cardPubli-span {
+    font-size: 12px;
+  }
+  .cardPubli-description {
+    font-size: 14px;
+  }
+  .userCard-text {
+    font-size: 14px;
+  }
+  /**/
+  .cardPubli-profile {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media only screen and (min-width: 820px) {
+
+  .userCard {
+    width: 380px;
+    height: 370px;
+  }
+  .userCard-container{
+    width: 360px;
+    height: 350px;
+  }
+  .userCard-name-skills {
+    padding: 3rem 0rem;
+  }
+  .userCard-name-skills {
+    padding: 1rem 0rem;
+  }
+  .name-publi {
+    font-size: 16px;
+   
+  }
+}
+

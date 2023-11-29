@@ -1,0 +1,746 @@
+.container-Profile {
+  max-width: 650px;
+  margin: 0 auto;
+  color: white;
+  
+  padding-bottom: 1rem;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.Profile-imgs-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+
+}
+
+.Profile-protadaImg-ProfileImg {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  position: relative;
+
+}
+
+.Profile-portadaImg img{
+  width: 100%;
+  display: block;
+
+}
+.Profile-portadaImg{
+  max-height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.showProfile-FrontPageImg{
+  height: 120px;
+  max-height: 120px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.showProfile-FrontPageImg img{
+  width: 100%;
+  display: block;
+}
+
+
+.Profile-ProfileImg {
+  position: absolute;
+  bottom: -14%;
+
+  width: 60px;
+  height: 60px;
+   border-radius: 50%;
+  
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+
+}
+.Profile-starts{
+  position: absolute;
+  bottom: -14%;
+  right: 0%;
+  bottom: -18%;
+
+}
+.Profile-stars-cant{
+  position: absolute;
+  bottom: -14%;
+  right: 0%;
+  bottom: -18%;
+ 
+  border-radius: 0.4rem;
+}
+.Profile-stars .MuiRating-iconFilled {
+  font-size: 20px; /* Tamaño personalizado para estrellas rellenas */
+ 
+}
+.Profile-stars .MuiRating-iconEmpty {
+  font-size: 20px; /* Tamaño personalizado para estrellas vacías */
+  color: white;
+}
+
+.Profile-ProfileImg img{
+  display: block;
+  width: 100%;
+}
+.Profile-info-NameUser{
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.Profile-info {
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.Profile-infoUser{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Profile-info-numberWhatsapp{
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.img-whatsapp{
+  width: 30px;
+}
+
+
+.Profile-btnChangeInfo-btn {
+  background-color: var(--primary-100);
+  padding: 0.5rem 3rem;
+  border: 1px solid transparent;
+  transition: 0.5s;
+  border-radius: 2rem;
+}
+.Profile-btnChangeInfo-btn:hover {
+  background-color: #f0f0f0;
+  border: 1px solid aqua;
+  color: black;
+}
+
+/**/
+
+
+/* Estilos para el contenedor de habilidades */
+.Profile-info-skills {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Estilos para cada habilidad y línea */
+.skill {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: #0070F0; /* Color del punto */
+  border-radius: 50%;
+  margin-right: 15px; /* Espacio entre el punto y el texto */
+}
+
+.text {
+  font-size: 13px;
+}
+
+.line {
+  width: 1.5px;
+  background-color:  #0070F0; /* Color de la línea */
+  height: 16px; /* Altura de la línea para que llegue al final */
+  margin-left: 1.9px; /* Espacio entre el punto y la línea */
+}
+
+/**/
+
+
+
+/*Section Show Profile*/
+
+.container-showProfile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding:1rem;
+  display: grid;
+  place-items: center;
+  gap:3rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000; /* Puedes ajustar este valor según tus necesidades */
+}
+.showProfile {
+  position: relative;
+
+  padding: 40px 20px;
+  background-color: #F2EDE9;
+  
+  max-width: 600px;
+  max-height: 780px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.swal-popup {
+  z-index: 900;
+}
+
+.showProfileClosed {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.1rem;
+  font-size: 25px;
+  cursor: pointer;
+  color: #000;
+}
+.showProfileClosed:hover {
+  color: red;
+}
+
+/*Images*/
+
+.showProfile-profileImg img {
+  width: 100%;
+  display: block;
+
+}
+.showProfile-imgs {
+  position: relative;
+  margin-top:15rem;
+  border: 1px solid #000;
+}
+
+.showProfile-profileImg {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+   border-radius: 50%;
+ 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+  right: 42%;
+  top: 70%;
+}
+
+
+/**/
+/* Estilos para el botón de cambio de foto de perfil */
+.showProfile-changeProfile{
+  position: absolute;
+  right: 40%;
+  top: 95%;
+  border: none;
+  cursor: pointer;
+  z-index: 1; /* Asegura que el botón esté sobre la imagen */
+
+}
+
+.change-profile-btnInput{
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 4.5px 0px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.outlinenone{
+ 
+  outline: none;
+  width: 30px;
+}
+.change-profile-btnCamera{
+position: absolute;
+
+pointer-events: none; /* Deshabilitar eventos del ratón en el icono de la cámara */
+}
+
+/*Styles for front-page*/
+
+
+
+.showProfile-changeFront{
+  position: absolute;
+  right: 3%;
+  top: 88%;
+ 
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1; /* Asegura que el botón esté sobre la imagen */
+}
+
+.change-front-btnInput{
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 4.5px 0px;
+  display: grid;
+  place-items: center;
+}
+.outlinenoneFront{
+  outline: none;
+  padding: 4.5px 4.5px;
+  width: 30px;
+
+}
+.change-front-btnCamera{
+  position: absolute;
+  
+  pointer-events: none; /* Deshabilitar eventos del ratón en el icono de la cámara */
+}
+
+
+
+/**/
+
+
+
+
+
+/*form*/
+
+.showProfile-form {
+  width: 100%;
+ height: 700px;
+ display:grid ;
+ place-items: center;
+ 
+
+}
+
+.showProfile-form-content {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem;
+  
+}
+.inputName{
+
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.5rem 2.5rem;
+  border-radius: 2rem;
+  color: black;
+}
+.form-userName  {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+
+}
+
+
+.form-numberPhone-age{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+
+.custom-select{
+
+ color: white;
+}
+
+.form-skills {
+  gap: 0.5rem;
+}
+.form-skills-label{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.form-skills span {
+  font-size: 9px;
+  text-align: center;
+  color: var(--primary-300);
+}
+.form-skills input {
+  width: 45%;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  color: black;
+}
+.form-skills-one,
+.form-skills-two {
+  display: flex;
+  justify-content: space-between;
+}
+.showProfile-form-content button {
+  background-color: var(--primary-100);
+  padding: 0.5rem 2rem;
+  border: 1px solid transparent;
+  transition: 0.5s;
+}
+.showProfile-form-content button:hover {
+  background-color: var(--primary-300);
+  color: black;
+  border: 1px solid var(--primary-100);
+}
+/**/
+/* Estilos personalizados para los elementos de formulario */
+.form-changeImgs-input {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;
+  padding: 1px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+
+}
+
+
+/* Estilo para ocultar el valor predeterminado del input[type="file"] */
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+/* Estilo para el botón personalizado */
+.custom-file-upload {
+  background-color:  #0070F0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+/*Section logout */
+
+.profile-logout {
+  width: 100%;
+  background-color: #c70039;
+  padding: 0.7rem 0rem;
+  border: 1px solid transparent;
+  transition: 0.5s;
+}
+.profile-logout:hover {
+  background-color: white;
+  color: #000;
+  border: 1px solid #c70039;
+}
+/**/
+@media only screen and (min-width: 320px) {
+  .showProfile{
+    height: 100%;
+    overflow-y: scroll;
+  }
+  .img-whatsapp,.img-fb,.img-email{
+    width: 30px;
+  }
+
+  /*section img front-page and profile*/
+  .Profile-portadaImg{
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  .Profile-ProfileImg {
+    position: absolute;
+    bottom: -9%;
+    
+  }
+  /**/
+  .container-Profile {
+    text-align: center;
+    width: 100%;
+
+  }
+  /*Estilos para el number */
+  .custom-select-width {
+    width: 100%;
+    background-color: none;
+    color: white;
+  }
+  .form-numberPhone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .inputContact{
+    width: 100%;
+    margin: 0 auto;
+   
+    border-radius: 2rem;
+    color: black;
+  }
+  .number-age-text{
+    color: black;
+    font-weight: 800;
+    font-size: 18px;
+   
+  }
+
+  /**/
+  .Profile-info {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0rem 1rem;
+  }
+  .Profile-imgs-info {
+    margin-bottom: 1rem;
+  }
+  /*Section Show Profile*/
+
+  .showProfile {
+    width: 350px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .showProfile-form label {
+    font-weight: 600;
+  }
+  .form-skills-one,
+  .form-skills-two {
+    flex-direction: column;
+   
+  }
+  .form-userName{
+    display: flex;
+    flex-direction: column;
+   
+  }
+  .inputName{
+    width: 100%;
+  }
+  .showProfile-form-content {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+   gap: 1rem;
+  }
+  .form-skills {
+    display: flex;
+    flex-direction: column;
+   gap: 1rem;
+  }
+  .form-skills-one,.form-skills-two{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-skills input {
+    width: 60%;
+  }
+  /**/
+
+  .showProfile-changeProfile{
+    right: 40%;
+    top: 98%;
+  }
+}
+.form-changeImgs {
+  flex-direction: column;
+}
+.form-changeImgs-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media only screen and (min-width: 600px) {
+    /*section img front-page and profile*/
+    .Profile-portadaImg{
+      max-height: 250px;
+      overflow: hidden;
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .Profile-ProfileImg {
+      position: absolute;
+      bottom: -9%;
+      
+    
+    }
+    .showProfile-profileImg {
+      width: 65px;
+      height: 65px;
+    
+    }
+    /**/
+  .Profile-imgs-info {
+    border-radius: 1rem 1rem 0rem 0rem;
+   
+  }
+ 
+
+  /*Section Show Profile*/
+  .showProfile-FrontPageImg{
+    height: 155px;
+    max-height: 155px;
+    overflow: hidden;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .showProfile-FrontPageImg img{
+    width: 100%;
+    display: block;
+
+  }
+  .showProfile {
+    width: 650px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  /*Estilos para el number */
+  .custom-select-width {
+    width: 40%;
+    background-color: none;
+    color: white;
+  }
+  .form-numberPhone{
+    flex-direction: row;
+   
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .inputContact{
+    width: 60%;
+    margin: 0 auto;
+   
+    border-radius: 2rem;
+    color: black;
+  }
+  .number-age-text{
+    color: black;
+    font-weight: 800;
+    font-size: 18px;
+   
+  }
+
+  /**/
+  
+  .form-skills-one,
+  .form-skills-two {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .showProfile-form-content {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .form-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .form-skills input {
+    width: 60%;
+  }
+  /**/
+  .showProfile-changeProfile{
+    right: 41%;
+    top: 93%;
+  }
+}
+@media only screen and (min-width: 820px) {
+
+  .swal-popup {
+    z-index: 10000;
+  }
+  
+  
+  .Profile-imgs-info {
+    border-radius: 1rem 1rem 0rem 0rem;
+  }
+  .Profile-portadaImg{
+    max-height: 120px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /*Section show Profile*/
+  .showProfile-profileImg {
+    right: 45%;
+    width: 75px;
+    height: 75px;
+
+
+  }
+  .showProfile-changeProfile{
+    right: 43%;
+    
+    top: 93%;
+  }
+  /**/
+}
+@media only screen and (min-width: 1500px) {
+
+  .showProfile-imgs {
+    position: relative;
+    margin-top:0rem;
+    border: 1px solid #000;
+  }
+  .showProfile-imgs{
+    margin-top: -0.5rem;
+  }
+
+}

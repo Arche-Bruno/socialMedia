@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+.container-register-infoImg{
+    display: none;
+}
+.container-register{
+ 
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        font-family: 'Outfit', sans-serif;
+}
+.container-register-info{
+    
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap:2.5rem;
+  padding: 2rem;
+}
+.container-register-infoTitle{
+    font-size: 22px;
+    font-weight: 650;
+}
+.container-register-logo{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*********************************************************/
+/*Section form*/
+.container-register-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 350px;
+    
+}
+.container-register-form form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.9rem;
+   
+   
+}
+.container-register-form-input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container-register-form form label{
+    
+    display: flex;
+    flex-direction: column;
+ 
+    gap: 0.5rem;
+}
+.container-register-form form label span{
+    font-size: 15px;
+font-weight: 600;
+}
+.container-register-formCheckBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-register-formCheckBox input{
+   margin-right: 0.5rem;
+   
+}
+.container-register-formCheckBox span{
+    font-size: 14px;
+    text-align: center;
+    color: #343346;
+
+}
+.container-register-btnLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.container-register-btnLogin button{
+  background-color: #0E0D23;
+  color:white;
+  width:100%;
+  border-radius: 50px;
+  padding: 1rem 1rem;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.createAcount:hover{
+    background-color: #343346;
+    transition: 0.5s;
+    color: white;
+}
+.container-register-btnLogin p{
+    font-size: 15px;
+    text-align: center;
+    color: #343346;
+}
+.sign{
+    text-decoration: underline;
+}
+/*********************************************************/
+@media only screen and (min-width:960px) {
+    .container-register-info{
+        margin-left: 35rem;
+    }
+    .container-register{
+        position: relative;
+      
+    }
+    .container-register-infoImg{
+        display: block;
+    }
+    .container-register{
+        display: flex;
+    }
+    .container-register-info{
+        max-width: 850px;
+        max-height: 1200px;
+          flex-direction: row;
+         align-items: center;
+         gap: 5rem;
+    }
+    .container-register-infoImg{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        max-width: 500px;
+         }
+         .container-register-infoImg img{
+            width: 100%;
+            height: 100%;
+            display: block;
+             }
+}

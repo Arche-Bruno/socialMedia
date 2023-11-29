@@ -1,0 +1,87 @@
+.container-fotos {
+    width: 100%;
+    position: relative;
+    
+
+  }
+  
+
+.fotos {
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  max-height: 850px; /* Ajusta la altura máxima según sea necesario */
+  overflow-y: scroll;
+}
+.fotosStill{
+  width: 500px;
+  height: 800px;
+  background-color:var(--bg-200);
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  max-height: 850px; /* Ajusta la altura máxima según sea necesario */
+  display: grid;
+  place-items: center;
+}
+.fotosStillSpan{
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+}
+
+.fotos::-webkit-scrollbar {
+  width: 12px;
+}
+
+.fotos::-webkit-scrollbar-track {
+  background:black;
+  margin: 1rem 0rem;
+}
+
+.fotos::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+
+}
+
+.fotos::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+  .custom-speed-dial {
+    /* Aquí puedes aplicar tus estilos personalizados */
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 1000;
+    /* Agrega más estilos según sea necesario */
+  }
+  .fotos-imgNull{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #555;
+  }
+  @media only screen and (min-width:300px) {
+    .fotosStill,.fotos{
+      width: 350px;
+      height: 800px;
+   
+    }
+  }
+  @media only screen and (min-width:420px) {
+    .fotosStill,.fotos{
+      width: 300px;
+      height: 800px;
+      
+    
+    }
+  }
+  @media only screen and (min-width:820px) {
+    .fotosStill,.fotos{
+      width: 500px;
+      height: 800px;
+      
+    
+    }
+  }

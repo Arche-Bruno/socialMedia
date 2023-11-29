@@ -1,0 +1,569 @@
+.container-createPost {
+  color: white;
+
+  margin: 0 auto;
+}
+.createPost-search-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+
+  overflow: hidden;
+}
+.createPost-profile-btnSearch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.createPost-profileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #0070F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.createPost-profileImg img {
+  display: block;
+  width: 100%;
+}
+.createPost-btnSearch {
+  border-radius: 2rem;
+  border: 1px solid #0070F0;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  padding: 0.5rem;
+}
+.createPost-btnSearch:hover {
+  background-color: #778899;
+  border: 1px solid #ccc;
+}
+
+
+
+/*Container showCreatePost*/
+.container-showCreatePost {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+ 
+  background-color: rgba(0, 0, 0, 0.9);
+ 
+  z-index: 1000;
+}
+.swal-popup {
+  z-index: 900;
+}
+
+.container-showCreatePostDaddy {
+  position: relative;
+  width: 100%;
+ 
+  max-width: 1400px;
+  height: 800px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 2rem 0;
+ 
+ 
+}
+.emoji-container-createPost{
+
+}
+.showCreatePostClosed {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.1rem;
+  font-size: 25px;
+  cursor: pointer;
+  color: #000;
+}
+.showCreatePostClosed:hover {
+  color: red;
+}
+.showCreatePost {
+  position: absolute;
+  border-radius: 1rem;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 95%;
+  height: 95%;
+
+  max-width: 750px;
+  max-height: 650px;
+
+  background-color: #F2EDE9;
+  padding: 1.5rem;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+.showCreatePost-img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.showCreatePost-img img {
+  width: 100%;
+  display: block;
+}
+.showCreatePost-img-nameSpan {
+  display: flex;
+  gap: 1rem;
+  
+}
+.cardPubli-name{
+  font-size: 15px;
+}
+.name{
+  color: #000;
+}
+.span {
+  color: #888888;
+  font-size: 12px;
+}
+.showCreatePost-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  width: 100%;
+  height: 100%;
+}
+.showCreatePost-form-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.showCreatePost-form-price input{
+    width: 15%;
+    text-align: center;
+    color: black;
+    border-radius: 0.5rem;
+}
+.showCreatePost-form-imgs {
+  width: 100%;
+  height: 30%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+ 
+}
+.showCreatePost-form-imgs1-2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  max-height: 200px;
+  
+  justify-content: space-between;
+  gap: 0.5rem;
+
+}
+
+.showCreatePost-form-img1,.showCreatePost-form-img2{
+ width: 60%;
+ max-height: 80px;
+ border-radius: 1rem;
+ border: 2px dashed #1a73e8;
+
+ display: grid;
+ place-items: center;
+
+}
+
+/*Estilos por si imgPost1 es true*/
+.showCreatePost-contenidoImg1{
+  width: 100%;
+  height: 100%;
+  max-height: 80px;
+ overflow: hidden;
+ border-radius: 1rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.showCreatePost-contenidoImg1 img{
+  display: block;
+  width: 60%;
+  border-radius: 1rem;
+  overflow: hidden;
+ 
+}
+/**/
+
+/*Estilos por si imgPost2 es true*/
+
+.showCreatePost-contenidoImg2 img{
+  display: block;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+ 
+}
+/**/
+
+/*Estilos para el agregar(+)*/
+.showCreatePost-contenidoImg img {
+  width: 100%;
+  display: block;
+}
+.showCreatePost-contenidoImg {
+  width: 30px;
+ 
+ position: relative;
+ border-radius: 50%;
+ overflow: hidden;
+ padding: 4.5px 0px;
+ display: grid;
+ place-items: center;
+ text-align: center;
+ 
+}
+
+
+.showCreatePost-contenidoImg input{
+  background-color:transparent;
+  border: none;
+}
+.containerImg{
+  position: absolute;
+  pointer-events: none; /* Deshabilitar eventos del ratón en el icono de la cámara */
+
+}
+.imgPost1,.imgPost2{
+  outline: none;
+  width: 30px;
+  background-color: transparent;
+}
+
+/**/
+/* Estilos para el textarea en modo oscuro */
+/* Estilos para el textarea en modo oscuro sin control de redimensionamiento */
+textarea {
+  width: 100%;
+  height: 10%;
+  max-height: 80px;
+  min-height: 25px;
+  padding: 10px;
+  border: 1px solid transparent; /* Cambia el color del borde en modo oscuro */
+  border-radius: 4px;
+  font-size: 14px;
+  resize: none; /* Deshabilita el control de redimensionamiento */
+  background-color: transparent; /* Cambia el color de fondo en modo oscuro */
+  color: #fff; /* Cambia el color del texto en modo oscuro */
+  overflow-y: auto; /* Agrega desplazamiento vertical */
+  scrollbar-width: none; /* Personaliza el estilo de la barra de desplazamiento (opcional) */
+  scrollbar-color: transparent; /* Personaliza el color de la barra de desplazamiento (opcional) */
+}
+textarea:focus {
+  outline: none; /* Elimina el contorno cuando se enfoca */
+}
+
+
+/*Estilos para los svgs de los input*/
+
+.icon-transition {
+  transition: opacity 0.8s ease; /* Establece la duración y el efecto de la transición */
+}
+
+.icon-transition:hover {
+  opacity: 0.7; /* Cambia la opacidad al pasar el cursor para dar una sensación de interacción */
+}
+/**/
+
+.showCreatePost-btnSubmit[type="submit"] {
+  
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #1a73e8;
+  
+  transition: background-color 0.3s;
+}
+
+.showCreatePost-btnSubmit:hover {
+  background-color: #0f4d9e;
+}
+
+.showCreatePost-container-btn-select{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.place{
+
+  width: 65%;
+}
+.occupation{
+
+  width:65% ;
+}
+.category{
+  width:65% ;
+}
+.selectPost{
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+/**/
+.createPost-btnsIcons {
+  display: flex;
+
+  justify-content: space-around;
+  font-size: 12px;
+  
+  
+}
+
+.createPost-btnsIcons img {
+  width: 20px;
+  
+}
+.createPost-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  padding: 0.5rem ;
+  border-radius: 1rem;
+}
+.createPost-btn:hover{
+  background-color: var(--bg-100);
+ 
+}
+@media only screen and (min-width: 320px) {
+  .showCreatePost-form-img1,.showCreatePost-form-img2{
+  
+    max-height: 60px;
+   
+   
+   }
+   
+   /*Estilos por si imgPost1 es true*/
+   .showCreatePost-contenidoImg1{
+    
+     max-height: 60px;
+  
+   }
+  .showCreatePost {
+    position: absolute;
+    border-radius: 1rem;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 95%;
+    height: 95%;
+  
+  
+    max-width: 750px;
+    max-height: 600px;
+  
+    background-color: #F2EDE9;
+    padding: 1.5rem;
+    margin: 0 auto;
+    overflow-y: scroll;
+  }
+     /*Section ShowCreatePost*/
+     .showCreatePost-container-btn-select{
+        display: flex;
+        justify-content: space-around;
+       
+    }
+   
+    .showCreatePost-btn-select{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2rem;
+        color: black;
+    }
+    .showCreatePost-btn-select span{
+        color: white;
+    }
+    /**/
+  .createPost-btnSearch {
+    width: 250px;
+  }
+  .createPost-search-icons {
+    gap: 0.5rem;
+  }
+  .createPost-btnsIcons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .createPost-btn {
+    flex-direction: row;
+    gap: 0.2;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+   
+
+    .showCreatePost-container-btn-select{
+     
+      flex-direction: row;
+      gap: 0.5rem;
+      justify-content: space-around;
+    }
+    .place{
+
+      width: 30%;
+    }
+    .occupation{
+    
+      width:30% ;
+    }
+    .category{
+      width:30% ;
+    }
+   
+  .createPost-btnSearch {
+    width: 480px;
+  }
+  .createPost-search-icons {
+    border-radius: 1rem 1rem 0rem 0rem;
+    height: auto;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .showCreatePost-form-img1,.showCreatePost-form-img2{
+  
+    max-height: 138px;
+   
+   
+   }
+   
+   /*Estilos por si imgPost1 es true*/
+   .showCreatePost-contenidoImg1{
+    
+     max-height: 138px;
+  
+   }
+
+}
+@media only screen and (min-width: 820px) {
+
+  .showCreatePost-form-img1,.showCreatePost-form-img2{
+  
+    max-height: 140px;
+   
+   
+   }
+   
+   /*Estilos por si imgPost1 es true*/
+   .showCreatePost-contenidoImg1{
+    
+     max-height: 140px;
+  
+   }
+   
+.container-showCreatePostDaddy {
+  position: relative;
+  width: 100%;
+ 
+  max-width: 1400px;
+  height: 900px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 2rem 0;
+ 
+ 
+}
+  .showCreatePost {
+    position: absolute;
+    border-radius: 1rem;
+   top:0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 95%;
+    height: 95%;
+  
+    max-width: 750px;
+    max-height: 590px;
+
+  
+    background-color: #F2EDE9;
+    padding: 1.5rem;
+    margin: 0 auto;
+ 
+  }
+  .createPost-btnSearch {
+    width: 380px;
+  }
+  .createPost-search-icons {
+    border-radius: 1rem 1rem 0rem 0rem;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1420px) {
+  .showCreatePost-form-img1,.showCreatePost-form-img2{
+  
+    max-height: 150px;
+   
+   
+   }
+   
+   /*Estilos por si imgPost1 es true*/
+   .showCreatePost-contenidoImg1{
+    
+     max-height: 150px;
+  
+   }
+   
+  .showCreatePost {
+    position: absolute;
+    border-radius: 1rem;
+   top:2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 95%;
+    height: 100%;
+  
+    max-width: 750px;
+    max-height: 620px;
+
+  
+    background-color: #F2EDE9;
+    padding: 1.5rem;
+    margin: 0 auto;
+ 
+  }
+}

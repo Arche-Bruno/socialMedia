@@ -1,0 +1,53 @@
+.createAcount{
+
+}
+.sign{
+    text-decoration: underline;
+}
+.sign-resetPassword{
+     text-decoration: underline;
+     cursor: pointer;
+}
+.container-login-btnLogin p{
+    font-size: 15px;
+    text-align: center;
+    color: #343346;
+}
+.container-login-btnLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.container-login-btnLogin button{
+    background-color: #0E0D23;
+    color:white;
+    width: 100%;
+    border-radius: 50px;
+    padding: 1rem 0rem;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .createAcount:hover{
+      background-color: #343346;
+      transition: 0.5s;
+      color: white;
+  }
+
+  @media screen and (max-width :580px){
+    .container-login-btnLogin p{
+        font-size: 10px;
+       
+    }
+    .container-login-btnLogin button{
+
+   
+        width: 100%;
+        border-radius: 50px;
+        padding: 0.5rem 0rem;
+        font-size: 12px;
+        font-weight: 500;
+      }
+  }

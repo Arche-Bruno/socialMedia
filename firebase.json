@@ -1,0 +1,39 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ],
+    "cleanUrls": true, 
+    "trailingSlash": false, 
+    "errorPages": [
+      {
+        "code": "404",
+        "path": "/404.html"
+      },
+      {
+        "code": "500",
+        "path": "/500.html"
+      }
+    ]
+  }
+}

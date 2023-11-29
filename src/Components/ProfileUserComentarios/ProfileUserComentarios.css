@@ -1,0 +1,144 @@
+.container-comentarios{
+    display: grid;
+    place-items: center;
+    width: 500px;
+    height: 600px;
+ position: relative;
+ border: 1px solid #ccc;
+ border-radius: 1rem;
+ 
+}
+.comentarios-content{
+    width: 95%;
+    
+    margin: 0 auto;
+    height: 100%;
+    overflow: hidden;
+   
+}
+.content0{
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  border-radius: 1rem;
+  background-color:var(--bg-200);
+  height: 100%;
+  color: white;
+  text-align: center;
+}
+.comentarios-button{
+  position: absolute;
+  bottom: -10%;
+}
+.author:hover{
+  text-decoration: underline;
+ 
+}
+/**/
+.container-comments-btns {
+    width: 100%;
+    height: 100%;
+
+  }
+  .textArea{
+    height: 50px;
+    padding: 0.8rem 0rem;
+  }
+.container-buttons {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 1rem;
+    gap: 1rem;
+   
+  }
+
+ 
+  
+  .buttons-cancela{
+    color: white;
+    font-weight: 700;
+    padding: 0.7rem;
+  }
+  .buttons-comentar {
+    color: white;
+    font-weight: 700;
+    padding: 0.7rem;
+    background-color: #007bff;
+  }
+  .buttons-comentar-inhabilitado {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .buttons-cancela-invi{
+    height: 50px;
+  }
+/**/  
+
+.container-comments{
+    display: flex;
+    align-items: center;
+   padding: 0rem  1rem;
+}
+
+.buttons-cancela:hover{
+    background-color: var(--bg-200);
+}
+/*Estilos para el emoji*/
+
+.emoji-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  
+  .emoji-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999; /* Asegúrate de que el z-index sea lo suficientemente alto para que el selector de emoji aparezca encima del contenido */
+    /* Agrega aquí más estilos según sea necesario para ajustar la apariencia de la card de emoji */
+  }
+  @media only screen and (min-width:300px) {
+
+    .container-comentarios{
+      display: grid;
+      place-items: center;
+      width: 350px;
+      height: 600px;
+   position: relative;
+   border: 1px solid #ccc;
+   border-radius: 1rem;
+   
+  }
+  }
+  @media only screen and (min-width:420px) {
+
+    .container-comentarios{
+      display: grid;
+      place-items: center;
+      width: 400px;
+      height: 600px;
+   position: relative;
+   border: 1px solid #ccc;
+   border-radius: 1rem;
+   
+  }
+  }
+  @media only screen and (min-width:820px) {
+
+    .container-comentarios{
+      display: grid;
+      place-items: center;
+      width: 500px;
+      height: 600px;
+   position: relative;
+   border: 1px solid #ccc;
+   border-radius: 1rem;
+   
+  }
+  }

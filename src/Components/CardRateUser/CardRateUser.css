@@ -1,0 +1,40 @@
+.container-cardRateUser {
+   
+  
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .cardRateUser {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right:1%;
+    top: 10%;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px solid #fff;
+  }
+  .nameLike{
+    font-size: 12px;
+  }
+  @media screen and (min-width :350px) {
+ 
+    
+  }
+  .starts .MuiRating-iconFilled {
+    font-size: 25px; /* Tamaño personalizado para estrellas rellenas */
+   
+  }
+  .starts .MuiRating-iconEmpty {
+    font-size: 25px; /* Tamaño personalizado para estrellas vacías */
+    color: white;
+  }
+  
+  
