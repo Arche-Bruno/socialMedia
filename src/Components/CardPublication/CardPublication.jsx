@@ -39,6 +39,8 @@ import HeartWhite from "../ICONS/HeartWhite";
 import HeartFill from "../ICONS/HeartFill";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
+import mediumZoom from 'medium-zoom';
+
 
 import PersonIcon from "@mui/icons-material/Person";
 import Swal from "sweetalert2";
@@ -121,22 +123,34 @@ const CardPublication = ({
     images.push({ imgPath: img2 });
   }
   const theme = useTheme();
-  const [activeStep, setActiveStep] = useState(0);
 
+
+  const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
+  const [zoomInstance, setZoomInstance] = React.useState(null);
+
+  useEffect(() => {
+    // Crea la instancia de medium-zoom al montar el componente
+  // Crea la instancia de medium-zoom al montar el componente
+  const zoom = mediumZoom('.zoomable-image', {
+    background: '#000', // Color de fondo al hacer clic
+  });
+    setZoomInstance(zoom);
+
+    // Limpia los recursos al desmontar el componente
+    return () => {
+      zoom.detach();
+    };
+  }, []); // Asegúrate de que el array de dependencias esté vacío para que se ejecute solo una vez
+
+  
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => {
-      const parsedStep = parseInt(prevActiveStep, 10);
-      return isNaN(parsedStep) ? 0 : parsedStep + 1;
-    });
+    setActiveStep((prevActiveStep) => (prevActiveStep + 1) % maxSteps);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => {
-      const parsedStep = parseInt(prevActiveStep, 10);
-      return isNaN(parsedStep) ? 0 : parsedStep - 1;
-    });
+    setActiveStep((prevActiveStep) => (prevActiveStep - 1 + maxSteps) % maxSteps);
   };
 
   /**/
@@ -219,7 +233,7 @@ const CardPublication = ({
       allowOutsideClick: false, // Para evitar que el cuadro de diálogo se cierre haciendo clic fuera de él
       cancelButtonText: "Cancelar", // Cambia el texto del botón Cancelar
     });
-
+//
     if (result.isConfirmed) {
       let period = "am";
       const currentTime = new Date();
@@ -233,9 +247,12 @@ const CardPublication = ({
         .toString()
         .padStart(2, "0")} ${period}`; // Formatea la hora en formato 12 horas
 
+      
       let redirectUrl;
       if (/^\d{9}$/.test(number)) {
-        redirectUrl = `https://api.whatsapp.com/send?phone=51${number}`;
+         // Agrega el parámetro "text" a la URL de WhatsApp
+         const message = encodeURIComponent(`Hola, ${name}, te contacto desde la pagina Cachueleate.com mi nombre es : `);
+         redirectUrl = `https://api.whatsapp.com/send?phone=51${number}&text=${message}`;
       } else if (number.includes("@")) {
         redirectUrl = `mailto:${number}`;
       } else if (number.startsWith("http")) {
@@ -456,9 +473,12 @@ const CardPublication = ({
     cursor: "pointer",
   };
 
+
+  /**/ 
+
   /**/
   return (
-    <div id={`publication_${idPublication}`} /* Resto del código */>
+    <article id={`publication_${idPublication}`} /* Resto del código */>
       <div className="container-cardPubli">
         <div className="cardPubliAll">
           <div className="cardPubli-profileImg-starts">
@@ -491,7 +511,8 @@ const CardPublication = ({
                     </span>
                   </div>
                   <div className="cardPubli-hora">
-                    <p>{timeString}</p>
+                  
+                    <span> {timeString}</span>
                     <PublicIcon fontSize="small" />
                   </div>
                 </div>
@@ -597,137 +618,82 @@ const CardPublication = ({
 
 
           <div className="cardPubli-publiImgs">
-            <Box
-              className="img-publicacion"
-              sx={{
-                maxWidth: "100%",
-                height: "100%",
-                flexGrow: 1,
-                position: "relative",
-              
-              }}
-            >
-              <div
+      <Box
+        className="img-publicacion"
+        sx={{
+          maxWidth: "100%",
+          height: "100%",
+          flexGrow: 1,
+          position: "relative",
+        }}
+      >
+        <div
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={activeStep}
+        >
+          <Box
+  component="img"
+  className="zoomable-image"
+  sx={{
+    height: "100%",
+    display: "display",
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: "650px",
+    overflow: "hidden",
+    width: "100%",
+  }}
+  src={images[activeStep]?.imgPath}
+  onClick={() => handleImageClick(activeStep)}
+  alt={name}
+/>
 
-                axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-                index={activeStep}
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "45px",
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 70%, rgba(0,0,0,0.9) 100%)",
+            }}
+          />
 
-              >
-                <Box
-                  component="img"
-                  sx={{
-                    height: "100%",
-                    display: "display",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    maxWidth: "650px",
-                    overflow: "hidden",
-                    width: "100%",
-                  }}
-                  src={images[activeStep]?.imgPath}
-                  onClick={() => handleImageClick(images[activeStep]?.imgPath)}
-                  alt={name}
-                />
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "45px",
-                    background:
-                      "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 70%, rgba(0,0,0,0.9) 100%)",
-                  }}
-                />
-
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "10px",
-                    left: "10px",
-                  }}
-                >
-                  <div className="publiImgsPlace">
-                    <Maps /> <span>Lima-Perú, {placeUser}</span>
-                  </div>
-                </Box>
-              </div>
-              {maxSteps > 1 && (
-                <MobileStepper
-                  steps={maxSteps}
-                  position="static"
-                  activeStep={activeStep}
-                  sx={{ bgcolor: "#121212" }}
-                  nextButton={
-                    <Btn
-                      size="small"
-                      onClick={handleNext}
-                      disabled={activeStep === maxSteps - 1}
-                    >
-                      Siguiente
-                      {theme.direction === "rtl" ? (
-                        <KeyboardArrowLeft />
-                      ) : (
-                        <KeyboardArrowRight />
-                      )}
-                    </Btn>
-                  }
-                  backButton={
-                    <Btn
-                      size="small"
-                      onClick={handleBack}
-                      disabled={activeStep === 0}
-                    >
-                      {theme.direction === "rtl" ? (
-                        <KeyboardArrowRight />
-                      ) : (
-                        <KeyboardArrowLeft />
-                      )}
-                      Atrás
-                    </Btn>
-                  }
-                />
-              )}
-            </Box>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="img-publicacion"
-            >
-         <Box
-                 
-      sx={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "90%", // Ajuste para ocupar el ancho máximo disponible
-        maxWidth: "600px", // Puedes ajustar este valor según tus necesidades
-        maxHeight: "100%", // Ajuste para ocupar el alto máximo disponible
-        height: "50%",
-        bgcolor: "#000",
-   
-        boxShadow: 24,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-                <img
-                  src={selectedImage}
-                  alt="Selected"
-                
-                  style={{
-                    objectFit: "contain",
-                    maxWidth: "90%",
-                    maxHeight: "100%",
-                  }}
-                />
-              </Box>
-            </Modal>
-          </div>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "10px",
+              left: "10px",
+            }}
+          >
+            <div className="publiImgsPlace">
+              <Maps /> <span>Lima-Perú, {placeUser}</span>
+            </div>
+          </Box>
+        </div>
+        {maxSteps > 1 && (
+          <MobileStepper
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            sx={{ bgcolor: "#121212" }}
+            nextButton={
+              <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                Siguiente
+                {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+              </Button>
+            }
+            backButton={
+              <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                {theme.direction === "rtl" ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                Atrás
+              </Button>
+            }
+          />
+        )}
+      </Box>
+    </div>
 
 
 
@@ -879,7 +845,7 @@ const CardPublication = ({
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

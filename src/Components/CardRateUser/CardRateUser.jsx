@@ -21,7 +21,7 @@ import { dbRealTime } from "../../Firebase";
 
 
 
-const CardRateUser = ({ name, start, online, imgProfile, id, hourUser }) => {
+const CardRateUser = ({ name, start, imgProfile, id, hourUser }) => {
   const { updateStart, removePublicationFromUser,} = useAuth();
 
 

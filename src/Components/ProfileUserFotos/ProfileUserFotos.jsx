@@ -5,7 +5,8 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "./ProfileUserFotos.css";
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 /*Para el subir foto*/
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
@@ -23,6 +24,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Swal from "sweetalert2";
 
 function srcset(image, width, height, rows = 1, cols = 1) {
   return {
@@ -80,15 +82,49 @@ const ProfileUserFotos = ({ id,name }) => {
   // ... (resto del código)
   /**/
 
-  /*Para eliminar la imagen*/
+  /*Para eliminar la imagen
   const handleImageDelete = (userId, imgId) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
       deleteImage(userId,imgId);
       handleCloseModal(); // Cierra el modal después de eliminar la imagen
     }
   };
-console.log(contImages)
 
+  
+  */
+  
+  const handleImageDelete = async (userId, imgId) => {
+    const result = await Swal.fire({
+      title: "¿Estás seguro de que quieres eliminar esta imagen?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+  
+    if (result.isConfirmed) {
+      // Lógica para eliminar la imagen
+      deleteImage(userId, imgId);
+      handleCloseModal(); // Cierra el modal después de eliminar la imagen
+  
+      // Puedes agregar más lógica aquí después de eliminar la imagen, si es necesario
+      showImageDeletedSnackbar();
+    }
+  };
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const showImageDeletedSnackbar = () => {
+    setSnackbarOpen(true);
+  };
+  
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
   /**/
   /*Para darle clic a la imagen y engrandarlo*/
 
@@ -143,9 +179,9 @@ console.log(contImages)
       console.error("Error al obtener la URL de la imagen:", error);
     }
   };
-  console.log(imgProfileUser);
+
   const actions = [
-    { icon: <FileCopyIcon />, name: "Copy" },
+   { icon: <FileCopyIcon />, name: "Copy" },
     { icon: <SaveIcon />, name: "Save" },
     { icon: <PrintIcon />, name: "Print" },
     { icon: <ShareIcon />, name: "Share" },
@@ -181,6 +217,7 @@ console.log(contImages)
                   />
                 ))}
               </SpeedDial>
+              
             </>
           ) : (
             <></>
@@ -230,30 +267,29 @@ console.log(contImages)
 
           {id === userActive.uid ? (
             <>
-              <SpeedDial
-                ariaLabel="SpeedDial basic example"
-                className="custom-speed-dial"
-                sx={{ position: "absolute", bottom: 16, right: 16 }}
-                icon={<SpeedDialIcon />}
-              >
-                {actions.map((action, index) => (
-                  <SpeedDialAction
-                    key={index}
-                    icon={action.icon}
-                    tooltipTitle={action.name}
-                    onClick={() => {
-                      if (index === 1) {
-                        const input = document.createElement("input");
-                        input.type = "file";
-                        input.accept = "image/*";
-                        input.id = "imgProfileUser";
-                        input.onchange = handleImageChange;
-                        input.click();
-                      }
-                    }}
-                  />
-                ))}
-              </SpeedDial>
+            <SpeedDial
+  ariaLabel="SpeedDial basic example"
+  className="custom-speed-dial"
+  sx={{ position: "absolute", bottom: 16, right: 16 }}
+  icon={<SpeedDialIcon />}
+>
+  {actions.map((action, index) => (
+    <SpeedDialAction
+      key={index}
+      icon={action.icon}
+      tooltipTitle={action.name}
+      onClick={() => {
+        // Mantén el mismo bloque de código dentro de este onClick
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.id = "imgProfileUser";
+        input.onchange = handleImageChange;
+        input.click();
+      }}
+    />
+  ))}
+</SpeedDial>
             </>
           ) : (
             <></>
@@ -290,7 +326,21 @@ console.log(contImages)
             </Box>
           )}
         </DialogContent>
+      
       </Dialog>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+      >
+        <MuiAlert
+          onClose={handleCloseSnackbar}
+          severity="warning"
+          sx={{ width: '100%' }}
+        >
+          Imagen eliminada
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 };

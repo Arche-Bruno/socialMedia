@@ -1,0 +1,12 @@
+/* Estilo predeterminado para la imagen */
+img.like {
+    width: 25px;
+  }
+  
+  /* Consulta de medios para pantallas con ancho menor o igual a 300px (ajusta el valor según tus necesidades) */
+  @media (max-width: 350px) {
+    img.like {
+      width: 80px; /* Cambia el tamaño de la imagen para pantallas más estrechas */
+    }
+  }
+  

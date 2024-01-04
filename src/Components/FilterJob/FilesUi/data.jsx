@@ -1,11 +1,14 @@
 export const category = [
+  { label: "Todos los trabajos", value: "Todos los trabajos" },
   { label: "Construcción", value: "Construcción" },
  
   { label: "Hogar", value: "Hogar" },
+  { label: "Limpieza general", value: "Limpieza General" },
   { label: "Produccíon", value: "Produccíon" },
   { label: "Cocina en general", value: "Cocina en general" },
   { label: "Cafetería", value: "Cafetería" },
   { label: "Tecnología", value: "Tecnología" },
+  { label: "Motorizado", value: "Motorizado" },
   { label: "Espectaculos", value: "Espectaculos" },
   { label: "Atención al cliente", value: "Atención al cliente" },
   { label: "Salud", value: "Salud" },
@@ -19,6 +22,7 @@ export const category = [
 ];
 /*Esto es de construcción*/
 export const occupation = [
+  
   { label: "Operario", value: "Operario" },
   { label: "Oficial", value: "Oficial" },
   { label: "Albañil", value: "Albañil" },
@@ -45,6 +49,7 @@ export const occupation = [
 
 /*Esto es de hogar*/
 export const ocuppationHome = [
+ 
   { label: "Limpieza Hogar", value: "Limpieza Hogar" },
   { label: "Asist. Niños", value: "Asist. Niños" },
   { label: "Asist. Doméstico", value: "Asist. Doméstico" },
@@ -53,6 +58,12 @@ export const ocuppationHome = [
 ];
 
 /**/
+export const occupationMotorizado=[
+  { label: "Motorizado", value: "Motorizado" },
+]
+export const occupationLimpieza=[
+  { label: "O.Limpieza", value: "O.Limpieza" },
+]
 /*Esto de produccion*/
 
 export const occupationProduction= [
@@ -210,6 +221,7 @@ export const occupationEvironmental = [
 ];
 /**/
 export const place = [
+  { label: "Todo Lima", value: "Todo Lima" },
   { label: "Lima", value: "Lima" },
   { label: "Jesús María", value: "Jesús María" },
   { label: "S.J. Lurigancho", value: "S.J. Lurigancho" },

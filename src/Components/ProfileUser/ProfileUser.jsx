@@ -66,6 +66,7 @@ import Divider from "@mui/material/Divider";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import Swal from "sweetalert2";
 
 const ProfileUser = () => {
   const { userId } = useParams();
@@ -81,6 +82,7 @@ const ProfileUser = () => {
     handlePublication,
     setUserOnlineStatus,
     signOutAccount,
+    addPublicationToUser,
   } = useAuth();
   const {
     getInformationAvailable,
@@ -89,6 +91,7 @@ const ProfileUser = () => {
     cantPublications,
     setCommentFocused,
   } = useContextPublication();
+ 
 
   const handleOpinarUsuario = () => {
     setCommentFocused(true);
@@ -250,12 +253,26 @@ const ProfileUser = () => {
   };
   /**/
   /*Para contactar usuario */
-  const handleContact = () => {
-    const confirmContact = window.confirm("¿Desea contactar a este usuario?");
-    if (confirmContact) {
+  const handleContact = async() => {
+    const result = await Swal.fire({
+      title: "¿Estás segur@?",
+      html: `Obtendrás los datos de contacto de <strong>${userData?.name}</strong>`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, contactar",
+      allowOutsideClick: false, // Para evitar que el cuadro de diálogo se cierre haciendo clic fuera de él
+      cancelButtonText: "Cancelar", // Cambia el texto del botón Cancelar
+    });
+   
+    if (result.isConfirmed) {
       let redirectUrl;
       if (/^\d{9}$/.test(userData?.numberPhone)) {
-        redirectUrl = `https://api.whatsapp.com/send?phone=51${userData?.numberPhone}`;
+        const message = encodeURIComponent(`Hola, ${userData?.name}, te contacto desde la pagina Cachueleate.com mi nombre es : `);
+        redirectUrl = `https://api.whatsapp.com/send?phone=51${userData?.numberPhone}&text=${message}`;
+
+       
       } else if (userData?.numberPhone.includes("@")) {
         redirectUrl = `mailto:${userData?.numberPhone}`;
       } else if (userData?.numberPhone.startsWith("http")) {
@@ -449,7 +466,8 @@ const ProfileUser = () => {
                 </div>
 
                 <div className="data-btns">
-                  <Stack spacing={2} direction="row" className="data-btns">
+                  {userId !== userActive.uid ? 
+                    <Stack spacing={2} direction="row" className="data-btns">
                     <Button variant="contained" onClick={handleOpinarUsuario}>
                       <ForumIcon></ForumIcon>
 
@@ -461,6 +479,11 @@ const ProfileUser = () => {
                       <span className="contactar">Contactar</span>
                     </Button>
                   </Stack>
+                  : 
+                  <>
+                  </>
+                }
+                
                 </div>
               </div>
             </div>

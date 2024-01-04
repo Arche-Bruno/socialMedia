@@ -1,0 +1,36 @@
+.container-cardPublicationLoading{
+ 
+  height: 100vh;
+ 
+}
+.cardPublicationLoading{
+   
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 650px;
+   
+    border-radius: 1rem;
+}
+.cardPublicationLoading-img{
+     width: 18rem;
+ 
+}
+.cardPublicationLoading-img img{
+    width: 100%;
+    display:block;
+    border-radius: 1rem;
+  
+}
+.cardPublicationLoading-span{
+
+    font-size: 1.6rem;
+    color:#fff; /* Color del texto */
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 400; /* Especifica el peso de la fuente */
+    text-align: center;
+    width: 80%;
+}
+.cardPublicationLoading-span span{
+    font-weight: 900;
+}

@@ -996,12 +996,12 @@ const updateImgProfile = async (newImgProfile) => {
      
     });
    
-    console.log(nameup)
+  
 
 
   };
 
-  console.log(updateProfileAccount())
+
   return (
     <authContext.Provider
       value={{

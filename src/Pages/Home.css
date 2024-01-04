@@ -8,6 +8,8 @@
 }
 .sign{
     cursor: pointer;
+    color: #000;
+    font-weight: 800;
 }
 .container-all{
     display: flex;
@@ -26,7 +28,7 @@
     display: flex;
     height: 520px;
     max-width: 920px;
-
+gap: -3rem;
     border-radius: 1rem;
     box-shadow: 0 5px 7px rgba(0, 0, 0, .1);
     transition: all 2s ease;
@@ -59,11 +61,18 @@
   gap:2rem;
 }
 .info-childs h2{
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2rem;
+    color: #333; /* Color del texto */
     font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
     font-weight: 700; /* Especifica el peso de la fuente */
 }
+.nameCompany{
+    font-size: 1.8rem;
+    color: #333; /* Color del texto */
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 700; /* Especifica el peso de la fuente */
+}
+
 .onfor-childs p{
     margin: 15px 0;
     color: #555;
@@ -71,7 +80,7 @@
 .info-childs input{
  
     outline: none;
-    background-color: #9191bd;
+    background-color: #154B62;
     border-radius: 1.5rem;
     padding: 10px 20px;
     color: white;
@@ -80,7 +89,7 @@
 
 }
 .info-childs input:hover{
-    border: solid 2px #9191bd;
+    border: solid 2px #154B62;
     background-color: transparent;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
     color: #000;
@@ -103,13 +112,30 @@
     border-bottom-right-radius: 20px;
  
 }
+.pc{
+    display: none;
+}
 .difu{
-  background-color: #5218FA;
+  background-color: #124765;
 }
 .screen-white{
     background-color: #f8f8f8;
     
 
+}
+.home-imgBandera{
+    
+width: 55px;
+
+}
+.home-imgBandera img{
+    display: block;
+    width: 100%;
+}
+.home-title-imgBandera{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 .form-information-childs{
 
@@ -123,8 +149,24 @@
  
 }
 .img-cell{
-   display: grid;
-   place-items: center;
+     width: 100%;
+     position: relative;
+}
+.img-cell img{
+     width: 100%;
+     display: block;   
+}
+.logoVideo{
+    position: absolute;
+    width: 80px;
+    right: 1%;
+    top: 82%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.logoVideo img{
+    width: 100%;
+    display: block;
 }
 .form-information-childs h2{
     color:#333;
@@ -199,40 +241,273 @@
     position: absolute;
     transform: translateY(-300%);
   }
+  .home-user,.home-company,.home-work {
+    display: flex;
+  
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+.container-svgsUserCompany{
+    
+    display: flex;
+    
+    font-size: 13px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 650; 
+
+
+}
+.count{
+    font-size: 2rem;
+    color: #333;
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 700; 
+}
+
+.home-stats {
+     display: grid;
+     place-items: center;
+  }
+  
+  .icon-container {
+     display: grid;
+     place-items: center;
+    width: 90px; /* Ajusta el tamaño según tus necesidades */
+    height: 90px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%; /* Hace que el contenedor sea redondo */
+    background-color: #fff; /* Cambia el color de fondo según tus preferencias */
+    
+ 
+  }
+  
+  .home-icon {
+    margin-left: 0.1rem;
+    width: 60px; /* Ajusta el tamaño según tus necesidades */
+    height: 60px; /* Ajusta el tamaño según tus necesidades */
+    border: 3px solid #154B62; /* Borde transparente dentro del icono */
+    border-radius: 50%; /* Borde redondeado dentro del icono */
+    padding: 12px; /* Ajusta el espacio entre el borde y el contenido del icono */
+  }
+  
+  
+  /* Otros estilos que puedas necesitar */
+  
+  
 @media screen and (max-width :750px){
     .container-home {
-        font-size: 12px;
+        font-size: 10px;
     }
+    .home-title-imgBandera h2{
+  font-size: 12px;
+    }
+ 
+    .img-cell{
+      display: none;
+   }
+   .logoVideo{
+    width: 46px;
+   }
+   .logoVideo{
+    right: 5.5%;
+   }
+   .pc{
+    display: block;
+   }
+ 
+   .container-all{
+    height: 100vh;
+   }
+   .info-childs h2{
+    font-size: 1.3rem;
+   }
+
+   .hide {
+    position: absolute;
+    transform: translateY(-300%);
+  }
+  .home-user,.home-company,.home-work {
+  
+    gap: 0.5rem;
+    
+}
+.container-svgsUserCompany{
+    
+    
+    font-size: 9px;
+    color: #333;
+  
+
+
+}
+.count{
+    font-size: 1rem;
+ 
+}
+.home-icon {
+    margin-left: 0.1rem;
+    width: 40px; /* Ajusta el tamaño según tus necesidades */
+    height: 40px; /* Ajusta el tamaño según tus necesidades */
+    border: 2px solid #154B62; /* Borde transparente dentro del icono */
+    
+    padding: 8px; /* Ajusta el espacio entre el borde y el contenido del icono */
+  }
+  .icon-container {
+    display: grid;
+    place-items: center;
+   width: 50px; /* Ajusta el tamaño según tus necesidades */
+   height: 50px; /* Ajusta el tamaño según tus necesidades */
+   border-radius: 50%; /* Hace que el contenedor sea redondo */
+   background-color: #fff; /* Cambia el color de fondo según tus preferencias */
+   
+
+ }
+
+
+
+
+.form-information-childs h2{
+   color:#333;
+   font-size: 1rem;
+}
+.form-information-childs p {
+   color: #555;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 800;
+}
+.logo-cell{
+    width: 50px;
+}
+   .container-home {
+    font-size: 12px;
+    height: auto;
+    flex-direction: column;
+}
+.container-svgsUserCompany{
+   
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #333;
+
+  
+}
+
+.form-information-childs h2{
+   color:#333;
+   font-size: 1rem;
+}
+.container-home-info{
+    width: 100%;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0;
+    max-width: 320px;
+    max-height: 380px;
+    
+}
+.container-home-information{
+    width:100%;
+    padding: 20px;
+    border-bottom-left-radius:20px ;
+    border-top-right-radius: 0px;
+    max-width: 320px;
+    max-height: 380px;
+    
+}
+.icons i{
+   
+    padding: 10px;
+
+    margin: 0 5px;
+
+}
 }
 @media screen and (max-width :580px){
+   
+   .info-childs h2{
+    font-size: 2.3rem;
+   }
+   .nameCompany{
+    font-size: 1rem;
+    color: #333; /* Color del texto */
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de incluir 'Montserrat' como fuente genérica al final */
+    font-weight: 700; /* Especifica el peso de la fuente */
+}
+    
+}
+@media screen and (max-width :300px){
     .container-home {
         font-size: 10px;
-        height: auto;
-        flex-direction: column;
     }
-    .container-home-info{
-        width: 100%;
-        padding: 20px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0;
-        max-width: 380px;
-    }
-    .container-home-information{
-        width: 100%;
-        padding: 20px;
-        border-bottom-left-radius:20px ;
-        border-top-right-radius: 0px;
+ 
+    
+ 
+   .container-all{
+    height: 100vh;
+   }
+   .info-childs h2{
+    font-size: 1.3rem;
+   }
 
-    }
-    .icons i{
-       
-        padding: 10px;
+   .hide {
+    position: absolute;
+    transform: translateY(-300%);
+  }
+  .home-user,.home-company,.home-work {
+  
+    gap: 0.5rem;
     
-        margin: 0 5px;
+}
+.container-svgsUserCompany{
     
-    }
+    
+    font-size: 9px;
+    color: #333;
+  
+
+
+}
+.count{
+    font-size: 1rem;
+ 
+}
+.home-icon {
+    margin-left: 0.1rem;
+    width: 40px; /* Ajusta el tamaño según tus necesidades */
+    height: 40px; /* Ajusta el tamaño según tus necesidades */
+    border: 2px solid #154B62; /* Borde transparente dentro del icono */
+    
+    padding: 8px; /* Ajusta el espacio entre el borde y el contenido del icono */
+  }
+  .icon-container {
+    display: grid;
+    place-items: center;
+   width: 50px; /* Ajusta el tamaño según tus necesidades */
+   height: 50px; /* Ajusta el tamaño según tus necesidades */
+   border-radius: 50%; /* Hace que el contenedor sea redondo */
+   background-color: #fff; /* Cambia el color de fondo según tus preferencias */
    
-    
+
+ }
+
+
+
+
+.form-information-childs h2{
+   color:#333;
+   font-size: 1rem;
+}
+.form-information-childs p {
+   color: #555;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 800;
+}
+.logo-cell{
+    width: 50px;
+}
 }

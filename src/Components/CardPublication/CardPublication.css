@@ -23,7 +23,20 @@
   color: white;
 
 }
+.zoomable-image {
+  cursor: zoom-in;
+}
+.medium-zoom-overlay {
+  z-index: 1000;
+}
 
+.medium-zoom-image {
+  z-index: 1001;
+}
+
+.author{
+  font-weight: 600;
+}
 .cardPubli-profileImg-starts {
   display: flex;
   justify-content: space-between;
@@ -431,11 +444,12 @@
 .cardPubli-btn{
   font-size: 12px;
 }
-@media only screen and (min-width: 350px) {
+@media only screen and (min-width: 300px) {
   .like-heart{
     display: flex;
     gap: 1rem;
   }
+  
   .userCard {
     width: 300px;
     height: 340px;
@@ -479,8 +493,9 @@
   }
   /**/
  
-  .text-like{
-    font-size: 10px;
+  .text-like,.text-heart{
+    font-size: 9px;
+    margin-left: -0.5rem;
   }
   .likeAnimation > span{
     margin-left: -8px;
@@ -511,13 +526,17 @@
     font-size: 12px;
   }
  .text-heart,.text-contact{
-  font-size: 10px;
+  font-size: 9px;
  }
 }
 
 @media only screen and (min-width: 600px) {
   .text-like{
     font-size: 15px;
+  }
+  .text-like,.text-heart{
+
+    margin-left: 0rem;
   }
   .text-heart,.text-contact{
     font-size: 15px;

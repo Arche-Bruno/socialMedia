@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FilterJob.css";
 import iconCate from "./../../images/iconCategory.svg";
 import iconCateOpen from "./../../images/iconCategoryOpen.svg";
@@ -22,33 +22,18 @@ import {
   occupationArt,
   occupationProfessional,
   occupationEvironmental,
+  occupationMotorizado,
+  occupationLimpieza,
 } from "./FilesUi/data";
 import { Select, SelectItem } from "@nextui-org/select";
-import { Button } from "@nextui-org/react";
-import { useAuth } from "../../Context/authContext";
-import Swal from 'sweetalert2'
+
 import 'animate.css';
+import { useContextPublication } from "../../Context/contextPublication";
 const FilterJob = () => {
   const [selectedCategory, setSelectedCategory] = useState({
     category: "Construcción",
   });
-
-  
-const handleFilter =()=>{
-  Swal.fire({
-    icon: "error",
-    title: "Ups...",
-    text: "Por el momento esta inhabilitado esta función",
-    footer: '<p href="#">Lo sentimos 😥</p>',
-    customClass: {
-      popup: 'my-popup-class',
-      header: 'my-header-class',
-      title: 'my-title-class',
-      content: 'my-content-class',
-      footer: 'my-footer-class',
-    }
-  });
-}
+  const {setPostsAvailableCategory,postsAvailableCategory,setPostsAvailablePlace}= useContextPublication();
   const [userInteractedFilter, setUserInteractedFilter] = useState({
     changeCategory: false,
     changeOccupation: false,
@@ -59,6 +44,12 @@ const handleFilter =()=>{
     occupation: "",
     place: "",
   });
+  useEffect(() => {
+    setPostsAvailableCategory(dataFilter.category);
+    setPostsAvailablePlace(dataFilter.place)
+  }, [dataFilter]);
+  
+
 
   const handleValue = (e) => {
     const { name, value } = e.target;
@@ -105,7 +96,7 @@ const handleFilter =()=>{
               )
 
             }
-            defaultSelectedKeys={["Construcción"]}
+            defaultSelectedKeys={["Todos los trabajos"]}
             name="category"
             onChange={handleValue}
           >
@@ -120,7 +111,8 @@ const handleFilter =()=>{
             ))}
           </Select>
         </div>
-
+        
+{/* 
         <div className="filter-btn filter-value">
           {selectedCategory.category === "Construcción" ? (
             <Select
@@ -138,7 +130,7 @@ const handleFilter =()=>{
               name="occupation"
               defaultSelectedKeys={occupation.value}
             >
-              
+       
               {occupation.map((occupation) => (
                 <SelectItem
                   color="default"
@@ -147,7 +139,7 @@ const handleFilter =()=>{
                 >
                   {occupation.label}
                 </SelectItem>
-              ))}
+              ))} 
             </Select>
 
           ) : selectedCategory.category === "Hogar" ? (
@@ -206,7 +198,63 @@ const handleFilter =()=>{
                 </SelectItem>
               ))}
             </Select>
-          )  : selectedCategory.category === "Cocina en general" ? (
+          )  : selectedCategory.category === "Motorizado" ? (
+            <Select
+              className="dark text-foreground bg-background max-w-xs"
+              label="Ocupación"
+              placeholder="Selecciona una ocupación"
+              startContent={
+
+                userInteractedFilter.changeOccupation ? (
+                  <img src={iconCateOpen} width={15} height={15} alt="iconCateOpen" />
+                ) : (
+                  <img src={iconCate} width={15} height={15} alt="iconCate" />
+                )
+
+              }
+              onChange={handleValue}
+              name="occupation"
+              defaultSelectedKeys={occupationMotorizado.value}
+            >
+              {occupationMotorizado.map((occupation) => (
+                <SelectItem
+                  color="default"
+                  key={occupation.value}
+                  value={occupation.value}
+                >
+                  {occupation.label}
+                </SelectItem>
+              ))}
+            </Select>
+          )  : selectedCategory.category === "Limpieza general" ? (
+            <Select
+              className="dark text-foreground bg-background max-w-xs"
+              label="Ocupación"
+              placeholder="Selecciona una ocupación"
+              startContent={
+
+                userInteractedFilter.changeOccupation ? (
+                  <img src={iconCateOpen} width={15} height={15} alt="iconCateOpen" />
+                ) : (
+                  <img src={iconCate} width={15} height={15} alt="iconCate" />
+                )
+
+              }
+              onChange={handleValue}
+              name="occupation"
+              defaultSelectedKeys={occupationLimpieza.value}
+            >
+              {occupationLimpieza.map((occupation) => (
+                <SelectItem
+                  color="default"
+                  key={occupation.value}
+                  value={occupation.value}
+                >
+                  {occupation.label}
+                </SelectItem>
+              ))}
+            </Select>
+          ): selectedCategory.category === "Cocina en general" ? (
             <Select
               className="dark text-foreground bg-background max-w-xs"
               label="Ocupación"
@@ -552,6 +600,9 @@ const handleFilter =()=>{
             </Select>
           )}
         </div>
+ */}
+
+
         <div className="filter-btn filter-value-lugar ">
           <Select
             className="dark text-foreground bg-background max-w-xs place"
@@ -565,7 +616,7 @@ const handleFilter =()=>{
             }
             onChange={handleValue}
             name="place"
-            defaultSelectedKeys={["Lima"]}
+            defaultSelectedKeys={["Todo Lima"]}
           >
             {place.map((animal) => (
               <SelectItem
@@ -580,11 +631,7 @@ const handleFilter =()=>{
           </Select>
         </div>
       </div>
-      <div className="searchFilter">
-        <Button color="primary" onClick={handleFilter} startContent={<img src={iconFilter} width={24}/>}>
-          Filtrar
-        </Button>
-      </div>
+     
     </div>
   );
 };

@@ -9,12 +9,17 @@
   --text-200:#94a3b8;
   --bg-100:#050505;
   --bg-200:#1E1E1E;
+
   --bg-300:#475569;
     
 }
-
+/*  anteriormente
+   --bg-100:#050505;
+  --bg-200:#0C1013;
+  */
 .LogoText-cachueleate{
   display: none;
+
 }
 .container-HomeComponents {
   font-family: "Outfit", sans-serif;
@@ -29,8 +34,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
+
 }
+
 
 
 .container-ul-svgs-btns-home,.container-ul-svgs-btns-notification{
@@ -40,7 +46,10 @@
 }
 
 .container-navBar {
-  background-color: var(--bg-200);
+
+    background-color:#1E1E1E;
+
+  
   position: fixed;
   width: 100%;
   padding: 0.5rem 0rem;
@@ -53,7 +62,7 @@
 }
 
 .container-button-img {
-  width: 50px;
+  width: 38px;
   background-color: #1e293b;
 
   overflow: hidden;
@@ -90,7 +99,7 @@
 
 .container-home-FilterJob {
  
-  max-height: 500px;
+  max-height: 300px;
   border-radius: 1rem;
   padding: 1rem 0.2rem;
   width: 100%;
@@ -328,6 +337,7 @@ color: #ccc;
   .textLogo{
     display: block;
     width: 12rem;
+    height: 2.3rem;
     
   }
 

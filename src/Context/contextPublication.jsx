@@ -9,6 +9,7 @@ import { onValue, push, set,ref,get, update } from "firebase/database";
 import { auth,dbRealTime, storage,serverTimestamp } from "../Firebase";
 import { getDownloadURL, uploadBytes } from "firebase/storage";
 import { ref as storageRef } from "firebase/storage";
+import CardPublication from "../Components/CardPublication/CardPublication";
 
 export const contextPublication = createContext();
 
@@ -32,9 +33,12 @@ export const PublicationProvider = ({ children }) => {
    const { userActive, nameState, imgProfile, numberPhoneState, skillsOne, skillsTwo, skillsThree, skillsFour, startsState,isUserOnline,frontPage } = useAuth();
  
    const [postsAvailable, setPostsAvailable] = useState([]);
+   const [postsAvailableCategory, setPostsAvailableCategory]= useState(null);
+   const [postsAvailablePlace , setPostsAvailablePlace ] = useState(null);
+   
 
    
-   const [imgPublication1,setImgPublication1]= useState("");
+   const [imgPublication1,setImgPublication1]= useState(null);
    const [imgPublication2,setImgPublication2]= useState("");
 
    const [cantPublications, setCantPublications] = useState(0)
@@ -366,27 +370,29 @@ const getHeartForPublication = async (userId, publicationId) => {
 };
 
 
-
-/**/ 
-
-  // Lógica para recuperar las publicaciones disponibles
 const getInformationAvailable = () => {
+  
 
-  const postsRef = ref(dbRealTime, "posts");
-  const postsSnapshotCallback = (snapshot) => {
-    const post = snapshot.val();
-    if (post) {
-      const postsArray = Object.values(post);
+   const postsRef = ref(dbRealTime, "posts");
+   const postsSnapshotCallback = (snapshot) => {
+     const post = snapshot.val();
+     if (post) {
+       const postsArray = Object.values(post);
+   
+       
+       setPostsAvailable(postsArray);
+     }
+
+    
+
      
-      
-      setPostsAvailable(postsArray);
-    }
-  };
-  onValue(postsRef, postsSnapshotCallback);
-};
+   };
+   onValue(postsRef, postsSnapshotCallback);
+ };
 
 
- 
+
+  
    const getDataCreatePost = (postData) => {
     // Lógica para crear una nueva publicación
     const userId = userActive.uid; // Obtenemos el uid del usuario actual
@@ -414,6 +420,7 @@ const getInformationAvailable = () => {
       place: postData.place,
       rango1: postData.rango1,
       rango2: postData.rango2,
+      needStudy : postData.needStudy,
       isOnline: isUserOnline, // Agrega el estado en línea del usuario a la publicación
 
     };
@@ -430,7 +437,7 @@ const getInformationAvailable = () => {
   return (
     <contextPublication.Provider value={{ getDataCreatePost,getInformationAvailable,postsAvailable,updateImgPublication1,imgPublication1,loadingImagen1,setLoadingImagen1,updateImgPublication2,imgPublication2,loadingImagen2,setLoadingImagen2,addLikePublication,getUserLike,getLikesForPublication,deleteLikePublication,getLikesCountForUser,addHeartPublication,deleteHeartPublication,getHeartForPublication,addHeartAllPublication ,deleteHeartAllPublication,getHeartAllUserData,
       setCantPublications,cantPublications,
- commentFocused, setCommentFocused,
+ commentFocused, setCommentFocused,setPostsAvailableCategory,postsAvailableCategory,setPostsAvailablePlace,postsAvailablePlace,
     }}>
       {children}
     </contextPublication.Provider>

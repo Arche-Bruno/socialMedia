@@ -58,6 +58,7 @@ import {
 import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import CardPublicationLoading from "../CardPublication/CardPublicationLoading";
 
 /**/ //Hover del listItms
 const listItemHover = {
@@ -87,11 +88,12 @@ const HomeComponents = () => {
   const [value, setValue] = useState(0);
   const [notifications, setNotifications] = useState(0); // Estado para el contador de notificaciones
   const [scrolled, setScrolled] = useState(false);
+  const [newArray, setNewArray] = useState([]);
   const containerRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 440) {
+      if (window.scrollY > 445) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -118,11 +120,14 @@ const HomeComponents = () => {
   }`;
 
   // Función para obtener el número total de likes del usuario
+ 
   const {
     getInformationAvailable,
     postsAvailable,
     getLikesCountForUser,
     getHeartAllUserData,
+    postsAvailableCategory,
+    postsAvailablePlace,
   } = useContextPublication();
   const {
     getArrUserPublication,
@@ -132,32 +137,52 @@ const HomeComponents = () => {
   } = useAuth();
 
   useEffect(() => {
-    getInformationAvailable();
-  }, []);
- 
-  const newArray = [];
-  let index = 0;
-  
-  for (const key in postsAvailable) {
-    const obj = postsAvailable[key];
-    for (const innerKey in obj) {
-      const newObj = {};
-      newObj[innerKey] = obj[innerKey];
-      newArray[index] = newObj;
-      index++;
+    // Lógica para procesar las publicaciones cuando cambia postsAvailable, postsAvailableCategory, o postsAvailablePlace
+    let index = 0;
+    let tempArray = [];
+
+    for (const key in postsAvailable) {
+      const obj = postsAvailable[key];
+      for (const innerKey in obj) {
+        const newObj = {};
+        newObj[innerKey] = obj[innerKey];
+        tempArray[index] = newObj;
+        index++;
+      }
     }
-  }
 
-  newArray.sort((a, b) => {
-    const timeA = Object.values(a)[0].createdTime;
-    const timeB = Object.values(b)[0].createdTime;
-    return timeA - timeB;
-  });
-  
-  // Invertir el arreglo ordenado para que el último elemento sea el primero y viceversa
-  newArray.reverse();
-  
+    tempArray.sort((a, b) => {
+      const timeA = Object.values(a)[0].createdTime;
+      const timeB = Object.values(b)[0].createdTime;
+      return timeA - timeB;
+    });
 
+    // Filtrar por categoría solo si postsAvailableCategory tiene un valor
+    if (postsAvailableCategory && postsAvailableCategory !== "Todos los trabajos") {
+      tempArray = tempArray.filter((item) => {
+        const category = Object.values(item)[0].category.toLowerCase();
+        return category === postsAvailableCategory.toLowerCase();
+      });
+    }
+
+    // Filtrar por lugar solo si postsAvailablePlace tiene un valor
+    if (postsAvailablePlace && postsAvailablePlace !== "Todo Lima") {
+      tempArray = tempArray.filter((item) => {
+        const place = Object.values(item)[0].place.toLowerCase();
+        return place === postsAvailablePlace.toLowerCase();
+      });
+    }
+
+    // Invertir el arreglo ordenado para que el último elemento sea el primero y viceversa
+    tempArray.reverse();
+
+    setNewArray(tempArray);
+
+    console.log(tempArray);
+
+    console.log("desde el homeComponets: " + postsAvailableCategory);
+
+  }, [postsAvailable, postsAvailableCategory, postsAvailablePlace]);
 
   const [likesCount, setLikesCount] = useState({ totalLikes: 0, likedBy: [] });
 
@@ -201,7 +226,7 @@ const HomeComponents = () => {
   const [dataHeart, setDataHeart] = useState([]);
 
   useEffect(() => {
-    getInformationAvailable();
+    getInformationAvailable()
     const userId = userActive.uid; // Reemplaza esto con el ID de usuario adecuado
     const fetchLikesCount = async () => {
       const { totalLikes, likedBy } = await getLikesCountForUser(userId);
@@ -292,7 +317,7 @@ const HomeComponents = () => {
             >
               <img src={logo} alt="Logo cachueleate" className="imgLogo" />
             </div>
-            <div className="LogoText-cachueleate">
+            <div className="LogoText-cachueleate" onClick={() => window.location.reload()}>
               <img
                 src={textLogo}
                 className="textLogo"
@@ -300,7 +325,7 @@ const HomeComponents = () => {
               />
             </div>
           </button>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme} >
             <Box sx={{ width: "100%" }}>
               <BottomNavigation
                 showLabels
@@ -556,35 +581,42 @@ const HomeComponents = () => {
               </>
             )}
           </div>
-
-          {newArray.map((item, index) => {
-  const data = Object.values(item)[0];
-  return (
-    <div key={index} className="container-home-publications">
-      <div className="publication">
-        <CardPublication
-          idPublication={data.idPubli}
-          id={data.id}
-          img={data.img}
-          imgFront={data.imgFront}
-          name={data.name}
-          text={data.textPost}
-          price1={data.rango1}
-          price2={data.rango2}
-          skills={data.skills}
-          number={data.numberPhone}
-          img1={data.img1} 
-          img2={data.img2} 
-          start={data.starts}
-          online={data.isOnline}
-          time={data.createdTime}
-          like={data.likes}
-          placeUser={data.place}
-        />
-      </div>
-    </div>
-  );
-})}
+       {newArray.length <= 0 ? 
+       
+       <div>
+         <CardPublicationLoading></CardPublicationLoading>
+     </div>
+        :
+        newArray.map((item, index) => {
+          const data = Object.values(item)[0];
+          return (
+            <div key={index} className="container-home-publications">
+              <div className="publication">
+                <CardPublication
+                  idPublication={data.idPubli}
+                  id={data.id}
+                  img={data.img}
+                  imgFront={data.imgFront}
+                  name={data.name}
+                  text={data.textPost}
+                  price1={data.rango1}
+                  price2={data.rango2}
+                  skills={data.skills}
+                  number={data.numberPhone}
+                  img1={data.img1} 
+                  img2={data.img2} 
+                  start={data.starts}
+                  online={data.isOnline}
+                  time={data.createdTime}
+                  like={data.likes}
+                  placeUser={data.place}
+                />
+              </div>
+            </div>
+          );
+        })
+      }
+      
 
         
         </div>

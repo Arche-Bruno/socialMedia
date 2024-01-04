@@ -34,7 +34,7 @@
 .container-register-form{
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     max-width: 350px;
     
 }
@@ -51,7 +51,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .container-register-form form label{

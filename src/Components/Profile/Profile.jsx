@@ -407,7 +407,7 @@ const Profile = () => {
                style={{ backgroundColor: "#0070F0", width: 25, height: 25 }}
              />
            </Stack>
-           <span>{nameState || userActive.email}
+           <span className="author">{nameState || userActive.email}
            </span>
           
            

@@ -19,6 +19,11 @@ import iconPlaceOpen from "./../../images/iconPlaceOpen.svg";
 import { Input } from "@nextui-org/react";
 import Swal from "sweetalert2";
 import "animate.css";
+
+/*Para poder saber si requiere o cuenta con secundaria completa*/
+import Switch from "@mui/material/Switch";
+import { pink } from '@mui/material/colors';
+/**/
 import {
   category,
   occupation,
@@ -36,9 +41,10 @@ import {
   place,
   occupationProduction,
   occupationCoffee,
+  occupationMotorizado,
+  occupationLimpieza,
 } from "../FilterJob/FilesUi/data";
 import { Select, SelectItem } from "@nextui-org/select";
-import { set } from "firebase/database";
 
 import { Textarea } from "@nextui-org/react";
 
@@ -62,7 +68,15 @@ const CreatePost = () => {
     updateImgPublication2,
     imgPublication2,
   } = useContextPublication();
+  /*for handle switch*/
+  const [checked, setChecked] = useState(false);
 
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+    dataPost.needStudy = event.target.checked
+  };
+  /**/
+  /* Para los emojis */
   const [dataPost, setDataPost] = useState({
     textPost: "",
     category: "",
@@ -70,9 +84,10 @@ const CreatePost = () => {
     place: "",
     rango1: 0,
     rango2: 0,
+    needStudy: checked,
   });
- 
-
+ console.log("el orginal",checked)
+ console.log("el dataPost",dataPost.needStudy)
   const [imgPost1, setImgPost1] = useState(null);
   const [imgPost2, setImgPost2] = useState(null);
   const handleOpen = () => {
@@ -108,7 +123,6 @@ const CreatePost = () => {
       changeOccupation: false,
       changePlace: false,
     });
-   
   };
   const [selectedCategoryPost, setSelectedCategoryPost] = useState({
     category: "Construcción",
@@ -163,9 +177,7 @@ const CreatePost = () => {
     }
   };
 
-  /* Para los emojis */
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [selectedEmoji, setSelectedEmoji] = useState("");
 
   const handleEmojiClick = (event) => {
     if (event.emoji) {
@@ -178,10 +190,10 @@ const CreatePost = () => {
     } else {
       console.log("Hubo un error al obtener el emoji");
     }
-  
+
     setShowEmojiPicker((prevShowEmojiPicker) => !prevShowEmojiPicker);
   };
-  
+
   const handleCreatePost = async (e) => {
     e.preventDefault();
 
@@ -269,6 +281,7 @@ const CreatePost = () => {
         place: "",
         rango1: 0,
         rango2: 0,
+        needStudy:false,
       });
       setImgPost1(null);
       setImgPost2(null);
@@ -305,7 +318,7 @@ const CreatePost = () => {
                       <img src={imgProfile} alt="imagen-profile" />
                     </div>
                     <div className="showCreatePost-nameSpan">
-                      <h1 className="name">{nameState || userActive.email}</h1>
+                      <h2 className="name">{nameState || userActive.email}</h2>
                       <span className="span">Publicar +</span>
                     </div>
                   </div>
@@ -327,14 +340,41 @@ const CreatePost = () => {
 
                     <div className="emoji-container-createPost">
                       {showEmojiPicker ? (
-                        <div className="emoji-picker">
-                          <EmojiPicker onEmojiClick={handleEmojiClick} />
-                          <button onClick={handleEmojiClick}>Cerrar</button>
+                        <div className="emoji-switch">
+                          <div className="emoji-picker">
+                            <EmojiPicker onEmojiClick={handleEmojiClick} />
+                            <button onClick={handleEmojiClick}>Cerrar</button>
+                          </div>
                         </div>
                       ) : (
-                        <button onClick={handleEmojiClick}>🙂</button> // Agrega un botón con una carita para abrir el selector de emoji
+                        <div className="emoji-switch">
+                          <button onClick={handleEmojiClick}>🙂</button>
+                          <div className="switch-span">
+                            {checked ? (
+                              
+                                <span className="switch-text">
+                                  Soy empresa
+                                </span>
+                         
+                            ) : (
+                          
+                                <span className="switch-text-dont" >
+                                 Soy independiente
+                                </span>
+                        
+                            )}
+
+                            <Switch  
+                              checked={checked}
+                              onChange={handleChange}
+                              color="warning"
+                              inputProps={{ "aria-label": "controlled" }}
+                            />
+                          </div>
+                        </div>
                       )}
                     </div>
+
                     <div className="showCreatePost-form-imgs">
                       <div className="showCreatePost-form-imgs1-2">
                         <div className="showCreatePost-form-img1">
@@ -397,7 +437,8 @@ const CreatePost = () => {
 
                     <hr />
                     <div className="showCreatePost-container-btn-select ">
-                      <div className="showCreatePost-btn-select category">
+                      <div className="showCreatePost-category-occupation">
+                      <div className="showCreatePost-btn-select category">   
                         <Select
                           className="dark text-foreground bg-background max-w-xs selectPost"
                           label="Categoria"
@@ -476,7 +517,6 @@ const CreatePost = () => {
                               </SelectItem>
                             ))}
                           </Select>
-                          
                         ) : selectedCategoryPost.category === "Tecnología" ? (
                           <Select
                             className="dark text-foreground bg-background max-w-xs selectPost"
@@ -506,6 +546,83 @@ const CreatePost = () => {
                             onChange={handleDataPost}
                           >
                             {occupationTecnology.map((occupation) => (
+                              <SelectItem
+                                color="default"
+                                key={occupation.value}
+                                value={occupation.value}
+                              >
+                                {occupation.value}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        ) : selectedCategoryPost.category === "Motorizado" ? (
+                          <Select
+                            className="dark text-foreground bg-background max-w-xs selectPost"
+                            label="Ocupación"
+                            placeholder="Selecciona una ocupación"
+                            startContent={
+                              userInteracted.changeOccupation ? (
+                                <img
+                                  src={iconCateOpen}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCateOpen"
+                                  className="icon-transition" // Clase CSS para la transición
+                                />
+                              ) : (
+                                <img
+                                  src={iconCate}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCate"
+                                  className="icon-transition" // Clase CSS para la transición
+                                />
+                              )
+                            }
+                            defaultSelectedKeys={occupation.value}
+                            name="occupation"
+                            onChange={handleDataPost}
+                          >
+                            {occupationMotorizado.map((occupation) => (
+                              <SelectItem
+                                color="default"
+                                key={occupation.value}
+                                value={occupation.value}
+                              >
+                                {occupation.value}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        ) : selectedCategoryPost.category ===
+                          "Limpieza general" ? (
+                          <Select
+                            className="dark text-foreground bg-background max-w-xs selectPost"
+                            label="Ocupación"
+                            placeholder="Selecciona una ocupación"
+                            startContent={
+                              userInteracted.changeOccupation ? (
+                                <img
+                                  src={iconCateOpen}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCateOpen"
+                                  className="icon-transition" // Clase CSS para la transición
+                                />
+                              ) : (
+                                <img
+                                  src={iconCate}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCate"
+                                  className="icon-transition" // Clase CSS para la transición
+                                />
+                              )
+                            }
+                            defaultSelectedKeys={occupation.value}
+                            name="occupation"
+                            onChange={handleDataPost}
+                          >
+                            {occupationLimpieza.map((occupation) => (
                               <SelectItem
                                 color="default"
                                 key={occupation.value}
@@ -591,7 +708,8 @@ const CreatePost = () => {
                               </SelectItem>
                             ))}
                           </Select>
-                        )  : selectedCategoryPost.category === "Cocina en general" ? (
+                        ) : selectedCategoryPost.category ===
+                          "Cocina en general" ? (
                           <Select
                             className="dark text-foreground bg-background max-w-xs selectPost"
                             label="Ocupación"
@@ -936,85 +1054,86 @@ const CreatePost = () => {
                               </SelectItem>
                             ))}
                           </Select>
-                       ) :selectedCategoryPost.category === "Atención al cliente" ? (
-                        <Select
-                          className="dark text-foreground bg-background max-w-xs selectPost"
-                          label="Ocupación"
-                          placeholder="Selecciona una ocupación"
-                          startContent={
-                            userInteracted.changeOccupation ? (
-                              <img
-                                src={iconCateOpen}
-                                width={15}
-                                height={15}
-                                alt="iconCateOpen"
-                                className="icon-transition"
-                              />
-                            ) : (
-                              <img
-                                src={iconCate}
-                                width={15}
-                                height={15}
-                                alt="iconCate"
-                                className="icon-transition"
-                              />
-                            )
-                          }
-                          defaultSelectedKeys={occupation.value}
-                          name="occupation"
-                          onChange={handleDataPost}
-                        >
-                          {occupationVentas.map((occupation) => (
-                            <SelectItem
-                              color="default"
-                              key={occupation.value}
-                              value={occupation.value}
-                            >
-                              {occupation.label}
-                            </SelectItem>
-                          ))}
-                        </Select>
-                    ): (
-                      <Select
-                      className="dark text-foreground bg-background max-w-xs selectPost"
-                      label="Ocupación"
-                      placeholder="Selecciona una ocupación"
-                      startContent={
-                        userInteracted.changeOccupation ? (
-                          <img
-                            src={iconCateOpen}
-                            width={15}
-                            height={15}
-                            alt="iconCateOpen"
-                            className="icon-transition"
-                          />
+                        ) : selectedCategoryPost.category ===
+                          "Atención al cliente" ? (
+                          <Select
+                            className="dark text-foreground bg-background max-w-xs selectPost"
+                            label="Ocupación"
+                            placeholder="Selecciona una ocupación"
+                            startContent={
+                              userInteracted.changeOccupation ? (
+                                <img
+                                  src={iconCateOpen}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCateOpen"
+                                  className="icon-transition"
+                                />
+                              ) : (
+                                <img
+                                  src={iconCate}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCate"
+                                  className="icon-transition"
+                                />
+                              )
+                            }
+                            defaultSelectedKeys={occupation.value}
+                            name="occupation"
+                            onChange={handleDataPost}
+                          >
+                            {occupationVentas.map((occupation) => (
+                              <SelectItem
+                                color="default"
+                                key={occupation.value}
+                                value={occupation.value}
+                              >
+                                {occupation.label}
+                              </SelectItem>
+                            ))}
+                          </Select>
                         ) : (
-                          <img
-                            src={iconCate}
-                            width={15}
-                            height={15}
-                            alt="iconCate"
-                            className="icon-transition"
-                          />
-                        )
-                      }
-                      defaultSelectedKeys={occupation.value}
-                      name="occupation"
-                      onChange={handleDataPost}
-                    >
-                      {occupation.map((occupation) => (
-                        <SelectItem
-                          color="default"
-                          key={occupation.value}
-                          value={occupation.value}
-                        >
-                          {occupation.label}
-                        </SelectItem>
-                      ))}
-                    </Select>
+                          <Select
+                            className="dark text-foreground bg-background max-w-xs selectPost"
+                            label="Ocupación"
+                            placeholder="Selecciona una ocupación"
+                            startContent={
+                              userInteracted.changeOccupation ? (
+                                <img
+                                  src={iconCateOpen}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCateOpen"
+                                  className="icon-transition"
+                                />
+                              ) : (
+                                <img
+                                  src={iconCate}
+                                  width={15}
+                                  height={15}
+                                  alt="iconCate"
+                                  className="icon-transition"
+                                />
+                              )
+                            }
+                            defaultSelectedKeys={occupation.value}
+                            name="occupation"
+                            onChange={handleDataPost}
+                          >
+                            {occupation.map((occupation) => (
+                              <SelectItem
+                                color="default"
+                                key={occupation.value}
+                                value={occupation.value}
+                              >
+                                {occupation.label}
+                              </SelectItem>
+                            ))}
+                          </Select>
                         )}
+                    </div>
                       </div>
-
                       <div className="showCreatePost-btn-select place">
                         <Select
                           className="dark text-foreground bg-background max-w-xs selectPost"
@@ -1073,6 +1192,7 @@ const CreatePost = () => {
                             <label className="sr-only" htmlFor="currency">
                               Currency
                             </label>
+                          {/*
                             <select
                               className="outline-none border-0 bg-transparent text-default-400 text-small"
                               id="currency"
@@ -1082,6 +1202,7 @@ const CreatePost = () => {
                               <option>USD</option>
                               <option>EUR</option>
                             </select>
+                          */ }
                           </div>
                         }
                         type="number"
@@ -1104,15 +1225,17 @@ const CreatePost = () => {
                             <label className="sr-only" htmlFor="currency">
                               Currency
                             </label>
-                            <select
-                              className="outline-none border-0 bg-transparent text-default-400 text-small"
-                              id="currency"
-                              name="currency"
-                            >
-                              <option>Sol ( S/ ).</option>
-                              <option>USD</option>
-                              <option>EUR</option>
-                            </select>
+                          {/*
+ <select
+ className="outline-none border-0 bg-transparent text-default-400 text-small"
+ id="currency"
+ name="currency"
+>
+ <option>Sol ( S/ ).</option>
+ <option>USD</option>
+ <option>EUR</option>
+</select>
+                        */}  
                           </div>
                         }
                         type="number"
